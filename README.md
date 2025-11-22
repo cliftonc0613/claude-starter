@@ -36,7 +36,24 @@ World-class design review workflows in `context/`:
    cd _starter
    ```
 
-2. **Add required MCP servers:**
+2. **Setup zclaude (optional):**
+   If you have both Claude Code Pro/Max and Z.AI Coding Plan subscriptions, you can use zclaude to switch between them without manual configuration:
+   ```bash
+   bash setup_zclaude.sh
+   ```
+
+   This setup script will:
+   - Detect your shell (bash, zsh, fish, ksh, csh)
+   - Create backups of your shell configuration
+   - Add `zclaude` command alias for Z.AI access
+   - Configure Z.AI MCP servers (glm-4.5-air and glm-4.6 models)
+   - Keep your existing `claude` command for Anthropic's Claude
+
+   After setup, use `zclaude` to access Z.AI features or `claude` for Anthropic's Claude.
+
+   **Learn more:** [zclaude repository](https://github.com/dharmapurikar/zclaude)
+
+3. **Add required MCP servers:**
    ```bash
    # Add Firecrawl MCP for web scraping
    claude mcp add -s project firecrawl "npx -y @modelcontextprotocol/server-firecrawl"
@@ -47,12 +64,12 @@ World-class design review workflows in `context/`:
 
    These MCPs are already configured in `.mcp.json`, but you'll need to approve them when prompted by Claude Code.
 
-3. **Customize for your project:**
+4. **Customize for your project:**
    - Edit `.claude/agents/` to add project-specific agents
    - Modify `.claude/commands/` to include your workflows
    - Create a project-specific `CLAUDE.md` with your architecture
 
-4. **Start using commands:**
+5. **Start using commands:**
    ```bash
    # In Claude Code
    /blog-research
@@ -159,14 +176,66 @@ Based on Stripe, Airbnb, and Linear design standards.
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code)
-- **Firecrawl MCP** - For web scraping and content research features
-- **Playwright MCP** - For browser automation and design review workflows
 
-Both MCP servers are pre-configured in `.mcp.json` and can be added using:
+## Model Context Protocol (MCP) Servers
+
+All MCP servers are pre-configured in `.mcp.json`. Here's what's included:
+
+### Core MCPs
+- **Firecrawl** - Web scraping, content extraction, and crawling for research features
+  - Requires `FIRECRAWL_API_KEY` environment variable
+
+- **Playwright** - Browser automation, visual testing, and design review workflows
+  - Cross-browser testing (Chrome, Firefox, Safari, WebKit)
+
+- **Sequential Thinking** - Extended thinking capabilities for complex problem-solving
+  - Built-in Anthropic MCP for deep analysis tasks
+
+### Data & API Integration
+- **Context7** - Documentation and library reference lookup
+  - Requires `CONTEXT7_API_KEY` environment variable
+  - Fetches up-to-date docs for libraries and frameworks
+
+- **Apify** - Web scraping and data extraction at scale
+  - Requires `APIFY_TOKEN` environment variable
+  - Access to 2,500+ pre-built scraping actors
+
+### Communication & Social
+- **Twitter MCP** - Post to Twitter and analyze social media
+  - Requires `TWITTER_API_KEY`, `TWITTER_API_SECRET_KEY`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_TOKEN_SECRET`
+  - Tweet creation and engagement analysis
+
+- **Resend** - Email sending and newsletter delivery
+  - Requires `RESEND_API_KEY` environment variable
+  - Send transactional and marketing emails
+
+### Setup MCPs
+
+Add individual MCPs using:
 ```bash
+# Firecrawl
 claude mcp add -s project firecrawl "npx -y @modelcontextprotocol/server-firecrawl"
+
+# Playwright
 claude mcp add -s project playwright "npx -y @modelcontextprotocol/server-playwright"
+
+# Sequential Thinking
+claude mcp add -s project sequential-thinking "npx -y @modelcontextprotocol/server-sequential-thinking"
+
+# Context7
+claude mcp add -s project context7 "npx -y @upstash/context7-mcp@latest"
+
+# Twitter MCP
+claude mcp add -s project twitter-mcp "npx -y @enescinar/twitter-mcp"
+
+# Resend
+# Configure with your custom server path
+
+# Apify
+claude mcp add -s project apify "npx -y @apify/actors-mcp-server"
 ```
+
+**Note:** MCPs configured in `.mcp.json` are already set up but may require approval in Claude Code on first use.
 
 ## Documentation
 
@@ -178,23 +247,117 @@ Full documentation in `CLAUDE.md` includes:
 
 ## Examples
 
-**Create a blog post:**
+### Content Creation & Research
+**Create a publication-ready blog post:**
 ```bash
-/blog-research
+/content-creation:blog-research
 ```
-Analyzes competitor blogs, identifies trends, writes SEO-optimized 1,200-2,000 word draft.
+- Analyzes 5-10 competitor blogs from your niche
+- Identifies trending topics, content gaps, and opportunities
+- Performs keyword research and search intent analysis
+- Writes SEO-optimized 1,200-2,000 word blog post
+- Provides 5 headline options and strategic CTAs
+- Outputs: competitive analysis, keywords, topic ideas, ready-to-publish draft
 
-**Run market research:**
+**Draft a newsletter from competitor analysis:**
 ```bash
-/market-research research-brief.md
+/content-creation:newsletter-research
 ```
-Generates executive summary, competitive analysis, and strategic recommendations.
+- Analyzes competitor newsletter content and trends
+- Extracts content themes and successful formats
+- Learns your authentic writing voice
+- Creates 500-800 word newsletter draft
+- Provides 3 compelling subject line options
+- Outputs: research report, ready-to-send newsletter
 
-**Audit a website:**
+**Generate a professional press release:**
 ```bash
-/website-research https://competitor.com
+/media-communications:press-release
 ```
-Technical SEO audit, keyword extraction, competitive intelligence.
+- Creates AP Style-compliant press releases
+- Researches target journalists and media outlets
+- Generates media distribution lists with contact info
+- Provides email templates and follow-up strategies
+- Identifies newsworthy angles and timing
+- Outputs: press release, media list, distribution strategy
+
+### Research & Analysis
+**Audit a website for SEO opportunities:**
+```bash
+/research-analysis:website-research https://competitor.com
+```
+- Technical SEO audit and recommendations
+- On-page optimization analysis
+- Keyword extraction and opportunities
+- Competitive intelligence analysis
+- Provides actionable improvement strategies
+- Outputs: comprehensive SEO report with rankings
+
+**Analyze YouTube channel strategy:**
+```bash
+/research-analysis:youtube-research https://youtube.com/c/channel-name
+```
+- Analyzes channel growth patterns and trends
+- Identifies content gaps and opportunities
+- Research SEO metrics and keyword opportunities
+- Maps competitive positioning
+- Suggests content strategy improvements
+- Outputs: competitive analysis, opportunity report
+
+### Personal Development & Tracking
+**Daily personal reflection check-in:**
+```bash
+/personal-development:daily-checkin
+```
+- Personal mood and energy tracking
+- Accomplishment logging and momentum scoring
+- Reflection prompts for growth
+- Visual trend analysis over time
+- Outputs: daily journal entries, pattern insights
+
+**Weekly intelligent progress check-in:**
+```bash
+/personal-development:weekly-checkin
+```
+- Metrics tracking adapted to your specific project
+- Week-over-week progress comparison
+- Visual trend visualization
+- Insights and recommendations
+- Outputs: weekly progress report
+
+**Time-aware reflection check-ins:**
+```bash
+/personal-development:time-checkin
+```
+- Morning (before 10am), midday (10am-3pm), or evening (after 5pm) reflections
+- Contextual questions based on time of day
+- Timezone-aware scheduling
+- Outputs: reflection entries with patterns
+
+### Utilities & Automation
+**Create custom agents for your workflows:**
+```bash
+/utilities:agent-creator
+```
+- Generate new Claude Code agent configurations
+- Customizable tools, models, and descriptions
+- Ready-to-use agent templates
+- Outputs: new agent markdown files in `.claude/agents/`
+
+**Build optimized prompts:**
+```bash
+/utilities:prompt-creator
+```
+- Refines and optimizes prompts for better results
+- Analyzes prompt structure and effectiveness
+- Provides prompt engineering best practices
+- Outputs: improved prompt variations
+
+### Project Management (Coming Soon)
+These commands are available in `.claude/commands/`:
+- `/start-phase` - Initialize development phases with planning
+- `/generate-tasks` - Create structured task lists from requirements
+- `/design-review` - Comprehensive visual design testing with Playwright
 
 ## Contributing
 
