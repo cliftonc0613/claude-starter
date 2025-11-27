@@ -22,6 +22,12 @@
         "name": "commit-commands",
         "type": "internal",
         "description": "Git workflow automation for commits, pushes, and pull requests"
+      },
+      {
+        "name": "agent-skill-creator-plugin",
+        "type": "external",
+        "marketplace": "francyjglisboa-agent-skill-creator",
+        "description": "Create agents, automate workflows, and generate custom skills"
       }
     ]
   }

@@ -1,6 +1,9 @@
 ---
 name: design-review
 description: Conduct a comprehensive design review of UI changes using the design-review agent
+model: haiku
+tools: Read, Write, Edit, Bash
+color: green
 ---
 
 You need to invoke the design-review agent to conduct a comprehensive design review of the current UI changes.
