@@ -1,0 +1,29 @@
+{
+  "plugins": [
+    "firecrawl",
+    "playwright",
+    "sequential-thinking",
+    "context7",
+    "twitter-mcp",
+    "resend",
+    "apify",
+    "ref",
+    "exa"
+  ],
+  "claudePlugins": {
+    "enabled": true,
+    "plugins": [
+      {
+        "name": "frontend-design",
+        "type": "internal",
+        "description": "Create distinctive, production-grade frontend interfaces with high design quality"
+      },
+      {
+        "name": "commit-commands",
+        "type": "internal",
+        "description": "Git workflow automation for commits, pushes, and pull requests"
+      }
+    ]
+  }
+}
+
