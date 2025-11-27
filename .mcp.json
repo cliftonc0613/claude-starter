@@ -68,6 +68,27 @@
       "env": {
         "APIFY_TOKEN": "${APIFY_TOKEN}"
       }
+    },
+    "ref": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "ref-tools-mcp@latest"
+      ],
+      "env": {
+        "REF_API_KEY": "${REF_API_KEY}"
+      }
+    },
+    "exa": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "exa-mcp-server"
+      ],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      }
     }
   }
 }
