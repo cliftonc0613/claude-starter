@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "name": "Claude Code Central Configuration",
+    "description": "Central repository configuration for syncing agents, commands, and skills across projects",
+    "version": "1.0.0",
+    "lastUpdated": "2025-12-14"
+  },
+  "centralRepoUrl": "https://github.com/cliftoncanady/Web-Apps-_starter.git",
+  "categories": {
+    "agents": {
+      "enabled": true,
+      "path": ".claude/agents",
+      "description": "AI agents for specialized tasks",
+      "categories": {
+        "research": "Content research and analysis agents",
+        "project-management": "Project planning and task generation",
+        "design-development": "Design review and frontend development",
+        "content-research": "Blog, newsletter, and content creation",
+        "utilities": "Utility agents for common tasks",
+        "personal-development": "Personal growth and reflection tools",
+        "market-research-business": "Market research and business analysis",
+        "youtube-analytics": "YouTube content analysis"
+      }
+    },
+    "commands": {
+      "enabled": true,
+      "path": ".claude/commands",
+      "description": "Slash commands for common workflows",
+      "categories": {
+        "content-creation": "Blog, newsletter, and press release creation",
+        "development": "Git flow, design polish, and development workflows",
+        "utilities": "Agent and prompt creation utilities",
+        "research-analysis": "Market, website, and YouTube research",
+        "personal-development": "Daily and weekly check-ins",
+        "media-communications": "Content distribution and media outreach"
+      }
+    },
+    "skills": {
+      "enabled": true,
+      "path": ".claude/skills",
+      "description": "Reusable skills with bundled resources",
+      "categories": {
+        "project-proposal-generator": "Generate structured project proposals",
+        "youtube-content-generator": "YouTube content creation and strategy"
+      }
+    }
+  },
+  "syncOptions": {
+    "backupBeforeSync": true,
+    "overwriteExisting": true,
+    "preserveLocalChanges": false,
+    "defaultSyncScope": "interactive"
+  }
+}
