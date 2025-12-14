@@ -1,6 +1,6 @@
 ---
 name: starter-project
-description: This skill should be used when initializing a new project with pre-configured Claude Code setup. It guides users through project naming and context, syncs agents/commands/skills from the central repository, creates essential folder structures (context/core, knowledge with subfolders), and generates placeholder JSON files for business profile, voice DNA, and ideal client profile.
+description: This skill should be used when initializing a new project with pre-configured Claude Code setup. It guides users through project naming and context, syncs agents/commands/skills from https://github.com/cliftonc0613/claude-starter with flexible three-tier selection (All/By Category/Specific Items), creates essential folder structures (context/core, knowledge with subfolders), and generates placeholder JSON files for business profile, voice DNA, and ideal client profile.
 ---
 
 # Starter Project Skill
@@ -9,11 +9,11 @@ description: This skill should be used when initializing a new project with pre-
 
 This skill bootstraps a new project with a complete Claude Code setup by:
 1. Gathering project context and naming
-2. Syncing pre-built agents, commands, and skills from your central repository
+2. Syncing pre-built agents, commands, and skills from https://github.com/cliftonc0613/claude-starter using flexible three-tier selection
 3. Creating essential folder structures for knowledge management and context
 4. Generating placeholder JSON files for business profiles, voice DNA, and client profiles
 
-This ensures every new project has a consistent, production-ready foundation.
+This ensures every new project has a consistent, production-ready foundation with only the tools you need.
 
 ## When to Use This Skill
 
@@ -34,24 +34,52 @@ Ask the user the following questions **one at a time**:
 2. **Project Description**: "What is this project about? (Brief 1-2 sentence description)"
 3. **Project Type**: "What type of project is this?" (e.g., SaaS, Blog, Service Business, Content Hub, etc.)
 
-### Step 2: Determine Sync Scope
+### Step 2: Determine Sync Scope (Three-Tier Selection System)
 
-Ask the user: "What would you like to sync from your central repository?"
+Pull the `.claude` folder from GitHub repo: https://github.com/cliftonc0613/claude-starter
 
-Provide options:
-- **All** - Sync everything (agents, commands, and skills)
-- **Agents only** - Sync just the agents
-- **Commands only** - Sync just the commands
-- **Skills only** - Sync just the skills
-- **Custom** - Let me choose individual items
+Present the user with a quick menu for selecting what to sync:
 
-Wait for their selection.
+**Tier 1: Quick Menu**
 
-### Step 3: Run sync-claude-config
+Ask: "How would you like to select what to sync from the Claude starter repository?"
 
-Run the `/development:sync-claude-config` command (or equivalent sync command) based on the user's selection from Step 2.
+Provide three options:
+1. **All** - Pull everything (agents, commands, and skills)
+2. **By Category** - Select which categories you want (agents, commands, skills)
+3. **Specific Items** - Handpick exact agents, commands, or skills by name
 
-Document what was synced and confirm success with the user.
+**If user selects "All":**
+- Skip Tiers 2 and 3
+- Clone the GitHub repo and copy the entire `.claude` folder
+- Proceed to Step 3
+
+**If user selects "By Category" (Tier 2):**
+- Ask: "Which categories would you like to sync?"
+- Show checkboxes for:
+  - ☐ Agents
+  - ☐ Commands
+  - ☐ Skills
+- User can select any combination
+- Clone the GitHub repo and copy selected categories
+- Proceed to Step 3
+
+**If user selects "Specific Items" (Tier 3):**
+- Clone the GitHub repo temporarily
+- Display all available items organized by category (agents, commands, skills)
+- Ask: "Which specific items would you like to sync?"
+- Show checkboxes for each available agent, command, and skill
+- User can select exact items they want
+- Copy only selected items to the project
+- Proceed to Step 3
+
+### Step 3: Complete Sync and Document
+
+After syncing (regardless of tier selection):
+- Display a summary of what was synced
+- Show file counts and categories pulled
+- Confirm success with the user
+- Clean up any temporary cloned repos
 
 ### Step 4: Create Folder Structure
 
