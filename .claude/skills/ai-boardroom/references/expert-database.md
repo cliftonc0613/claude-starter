@@ -213,6 +213,99 @@ The skill searches this database to recommend experts whose proven methodologies
 
 ---
 
+## INVESTMENT & FINANCIAL EXPERTS
+
+### **Burton Malkiel**
+- **Core Expertise:** Index investing, efficient market theory, long-term wealth building
+- **Primary Methodologies:** Evidence-based investing, passive index strategies, avoiding costly mistakes
+- **What He Built:** "A Random Walk Down Wall Street" - foundational text on efficient markets; decades of research on investment returns
+- **Best For:** Individual investors wanting to build long-term wealth, those avoiding active trading mistakes, DIY portfolio builders
+- **Key Frameworks:** Efficient market hypothesis, passive investing, long-term performance analysis
+- **Questions to Ask Him:**
+  - How do I build a wealth portfolio that actually beats the market (or stops trying to)?
+  - What does the research say about active vs. passive investing?
+  - How do I avoid costly investment mistakes?
+
+---
+
+### **William Bernstein**
+- **Core Expertise:** Portfolio theory, risk management, diversification, making complex finance accessible
+- **Primary Methodologies:** Asset allocation frameworks, behavioral finance insights, portfolio construction from first principles
+- **What He Built:** "The Intelligent Asset Allocator" - practical portfolio theory for individual investors; multiple books on financial history
+- **Best For:** Investors wanting to understand portfolio construction, those seeking to manage risk effectively, self-directed portfolio builders
+- **Key Frameworks:** Efficient frontiers, asset allocation, risk management, behavioral investing
+- **Questions to Ask Him:**
+  - How should I allocate my investments across different asset classes?
+  - What's the right level of risk for my situation?
+  - How do I understand portfolio theory without advanced math?
+
+---
+
+### **Rick Ferri**
+- **Core Expertise:** Low-cost index investing, efficient portfolio construction, DIY investor advocacy
+- **Primary Methodologies:** Index portfolio building, fee analysis, portfolio rebalancing, investor education
+- **What He Built:** Founder of Portfolio Solutions; "The Power of Passive Investing" and multiple investor education platforms
+- **Best For:** DIY investors wanting to build efficient portfolios, those avoiding high-fee advisors, index-focused investors
+- **Key Frameworks:** Index portfolio construction, cost-effective investing, rebalancing strategies
+- **Questions to Ask Him:**
+  - How do I build a low-cost index portfolio?
+  - What fees should I be paying for investing?
+  - How often should I rebalance my portfolio?
+
+---
+
+### **Aswath Damodaran**
+- **Core Expertise:** Valuation methods, stock analysis, making sense of market pricing
+- **Primary Methodologies:** DCF analysis, fundamental valuation, market pricing analysis, investment decision frameworks
+- **What He Built:** NYU valuation courses accessed by thousands; reputation as "Dean of Valuation"; multiple books on valuation
+- **Best For:** Investors wanting to understand what they're paying for stocks, fundamental analysts, value investors
+- **Key Frameworks:** Discounted cash flow analysis, relative valuation, valuation frameworks
+- **Questions to Ask Him:**
+  - How do I figure out if a stock is actually worth its price?
+  - What valuation methods make sense for different companies?
+  - How do I think about value vs. growth investments?
+
+---
+
+### **Ben Carlson**
+- **Core Expertise:** Behavior-focused wealth building, practical investing, avoiding emotional mistakes
+- **Primary Methodologies:** Behavioral finance insights, practical wealth strategies, emotional investing patterns
+- **What He Built:** Director of Institutional Asset Management at Ritholtz Wealth Management; books and prolific writing on investing behavior
+- **Best For:** Investors struggling with emotional decisions, those wanting practical wealth-building strategies, self-directed investors
+- **Key Frameworks:** Behavioral investing, emotional decision management, practical wealth strategies
+- **Questions to Ask Him:**
+  - How do I stop making emotional investing decisions?
+  - What are the behavioral mistakes most investors make?
+  - How do I build wealth without stress?
+
+---
+
+### **Christine Benz**
+- **Core Expertise:** Portfolio construction, retirement planning, comprehensive financial planning integration
+- **Primary Methodologies:** Holistic financial planning, retirement income strategies, portfolio-life integration
+- **What He Built:** Director of Personal Finance at Morningstar; decades of research on retirement and wealth planning
+- **Best For:** Those planning retirement, investors wanting comprehensive financial strategies, life-stage investors
+- **Key Frameworks:** Retirement income planning, portfolio-life alignment, comprehensive financial planning
+- **Questions to Ask Her:**
+  - How do I construct a portfolio that supports my retirement?
+  - What's the right withdrawal strategy in retirement?
+  - How do I integrate investments with overall financial planning?
+
+---
+
+### **Larry Swedroe**
+- **Core Expertise:** Factor investing, evidence-based portfolio strategies, research-driven investing
+- **Primary Methodologies:** Factor-based investing, research-backed strategies, portfolio construction from research
+- **What He Built:** Principal and Director of Research at Buckingham Strategic Wealth; multiple books on factor investing and evidence
+- **Best For:** Investors wanting research-backed strategies, those interested in factor investing, evidence-focused portfolio builders
+- **Key Frameworks:** Factor investing, evidence-based strategies, portfolio optimization
+- **Questions to Ask Him:**
+  - What does the research say about different investing factors (value, momentum, quality)?
+  - How do I build a factor-based portfolio?
+  - What strategies actually outperform the market according to research?
+
+---
+
 ## USING THIS DATABASE
 
 ### For Expert Recommendation
@@ -231,6 +324,10 @@ The skill helps users understand which expert to call for specific types of ques
 - Trade school/WIOA questions → Hector Resendez
 - Growth/metrics questions → Y Combinator partners
 - Marketing/funnel questions → Russell Brunson, Neil Patel
+- Investment & portfolio questions → Burton Malkiel, William Bernstein, Rick Ferri, Aswath Damodaran
+- Valuation & stock analysis → Aswath Damodaran, Larry Swedroe
+- Retirement & financial planning → Christine Benz, Ben Carlson
+- Behavioral investing & emotional decisions → Ben Carlson, William Bernstein
 
 ---
 
