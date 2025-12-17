@@ -83,8 +83,11 @@
       "description": "Reusable skills with bundled resources",
       "items": {
         "ai-boardroom": "Create virtual advisory board through conversational Q&A",
+        "brand-guidelines": "Style guide and branding asset management",
         "business-profile-creator": "Generate comprehensive business profiles",
         "ideal-client-profile": "Create detailed ideal client personas",
+        "pdf-anthropic": "PDF handling with Anthropic integration and form utilities",
+        "pdf-processing": "PDF manipulation and processing utilities",
         "presentor": "Build presentations using Presos framework",
         "project-proposal-generator": "Generate structured project proposals",
         "skill-creator": "Create new skills with proper structure",
