@@ -213,6 +213,246 @@ The skill searches this database to recommend experts whose proven methodologies
 
 ---
 
+## EDUCATORS & TEACHER DEVELOPMENT EXPERTS
+
+### **Jennifer Gonzalez**
+- **Core Expertise:** Teacher-to-entrepreneur transition, educational content creation, teacher professional development, platform building
+- **Primary Methodologies:** Content-driven authority building, podcast/blog integration, online course design, community building for educators
+- **What She Built:** Cult of Pedagogy - one of the most respected educational platforms; transitioned from classroom teacher to full-time education entrepreneur (2013-present)
+- **Best For:** Teachers wanting to scale their impact beyond the classroom, educators building online businesses, teacher consultants, education content creators
+- **Key Frameworks:** Packaging classroom expertise into sellable content, building educator communities, multi-platform content strategy
+- **Questions to Ask Her:**
+  - How do I transition from classroom teaching to education consulting/entrepreneurship?
+  - How do I package my teaching expertise into online courses and content?
+  - How do I build an authentic educator brand that maintains credibility?
+  - What's the best way to monetize educational content without losing my teaching audience?
+
+---
+
+### **Angela Watson**
+- **Core Expertise:** Teacher productivity systems, educator work-life balance, teacher burnout prevention, online program scaling
+- **Primary Methodologies:** Systematic productivity frameworks, pain-point identification, online course architecture, membership model building
+- **What She Built:** 40 Hour Teacher Workweek serving 60,000+ educators across 28,000+ schools; Truth for Teachers platform (2003-present); multiple program tiers (Fast Track, AI Membership, Leadership)
+- **Best For:** Educators struggling with work-life balance, teacher consultants building scalable programs, education entrepreneurs wanting membership models
+- **Key Frameworks:** 40 Hour productivity system, teacher time management, scalable online program design, free-to-paid conversion
+- **Questions to Ask Her:**
+  - How do I turn teacher pain points into profitable educational solutions?
+  - How do I scale from single course to multiple program offerings?
+  - How do I build a membership model for educators?
+  - What's the path from blog to sustainable six-figure education business?
+
+---
+
+### **Matt Miller**
+- **Core Expertise:** Educational technology integration, creative teaching strategies, teacher professional development, free-to-paid business model
+- **Primary Methodologies:** Generosity-based marketing (free resources first), edtech integration frameworks, engaging presentation design, online summit model
+- **What He Built:** Ditch That Textbook - international edtech brand; NYT bestselling author; named top 10 global edtech influencer; annual Digital Summit connecting thousands
+- **Best For:** Teachers wanting to leverage technology, education speakers, online course creators, teachers building authority through free content
+- **Key Frameworks:** Free resource library strategy, edtech integration, engaging workshop design, authority through generosity
+- **Questions to Ask Him:**
+  - How do I use free resources to build massive educator audience?
+  - How do I monetize edtech expertise through courses and speaking?
+  - What's the best way to run online summits for professional development?
+  - How do I become recognized as a thought leader in educational technology?
+
+---
+
+### **Dave Burgess**
+- **Core Expertise:** Engaging teaching performance, educational speaking/presenting, education publishing, teacher motivation and creativity
+- **Primary Methodologies:** "Teach Like a PIRATE" framework (Passion, Immersion, Rapport, Ask/Analyze, Transformation, Enthusiasm), performance-based teaching, word-of-mouth marketing
+- **What He Built:** NYT bestselling "Teach Like a PIRATE"; Dave Burgess Consulting Inc. (200+ educational titles published); premium speaker commanding high fees; 17-year award winner
+- **Best For:** Teachers wanting speaking careers, educators building remarkable teaching brands, education authors, teacher consultants seeking premium positioning
+- **Key Frameworks:** PIRATE framework, engagement strategies, remarkable teaching design, independent educational publishing
+- **Questions to Ask Him:**
+  - How do I make my teaching or consulting practice "remarkable" and word-of-mouth worthy?
+  - How do I transition from teacher to high-paid professional speaker?
+  - How do I build an educational publishing or consulting company?
+  - What makes educational content spread organically?
+
+---
+
+### **Pernille Ripp**
+- **Core Expertise:** Literacy education, global collaboration initiatives, personalized learning, virtual educational consulting
+- **Primary Methodologies:** Student-centered learning design, global project creation, flexible consulting models, identity-focused teaching
+- **What She Built:** Global Read Aloud connecting 200,000+ students (2010-present); multiple published books (Corwin, Solution Tree); international consulting practice with flexible pricing
+- **Best For:** Literacy educators, teachers creating global initiatives, education consultants wanting flexible business models, teacher authors
+- **Key Frameworks:** Student identity-centered learning, global collaboration design, sustainable teaching practices, personalized virtual consulting
+- **Questions to Ask Her:**
+  - How do I create global educational initiatives from classroom practice?
+  - How do I structure flexible consulting pricing for schools and districts?
+  - How do I balance teaching with international speaking/consulting?
+  - How do I write and publish educational books that gain traction?
+
+---
+
+### **Todd Whitaker**
+- **Core Expertise:** Educational leadership, teacher motivation, school culture transformation, principal effectiveness
+- **Primary Methodologies:** Focus on teacher quality as primary factor, systematic leadership frameworks, school change management, staff development
+- **What He Built:** 65+ books, millions sold worldwide; "What Great Teachers Do Differently" (750,000+ copies in US); professor and consultant reaching millions of educators
+- **Best For:** Teachers transitioning to leadership, education consultants, school administrators, educators wanting to write influential books
+- **Key Frameworks:** Teacher quality frameworks, principal effectiveness models, school culture change, systematic leadership
+- **Questions to Ask Him:**
+  - How do I package my educational expertise into frameworks that scale globally?
+  - How do I transition from classroom teacher to educational thought leader?
+  - How do I write educational books that sell hundreds of thousands of copies?
+  - What's the path from teaching to educational leadership consulting?
+
+---
+
+### **Elena Aguilar**
+- **Core Expertise:** Transformational coaching for educators, teacher professional development, equity-focused education, emotional resilience for teachers
+- **Primary Methodologies:** Transformational Coaching model (prioritizing beliefs/values before behaviors), equity frameworks, 50-hour PD effectiveness model
+- **What She Built:** Bright Morning consulting firm (founded 2017); 8 books including "The Art of Coaching" series and "Onward"; coaching frameworks used across school systems
+- **Best For:** Teacher coaches, education consultants focused on teacher development, equity-focused educators, professional development designers
+- **Key Frameworks:** Transformational Coaching model, equity coaching, emotional resilience frameworks, comprehensive PD design
+- **Questions to Ask Her:**
+  - How do I create systematic coaching frameworks for teacher development?
+  - How do I build a consulting firm focused on educational transformation?
+  - How do I design effective professional development that creates lasting change?
+  - How do I coach teachers around equity and emotional resilience?
+
+---
+
+### **Dr. Carol Dweck**
+- **Core Expertise:** Growth mindset psychology, learning theory, motivation science, educational mindset interventions
+- **Primary Methodologies:** Fixed vs. growth mindset framework, brain plasticity education, challenge-as-opportunity reframing, praise and feedback strategies
+- **What She Built:** Stanford research professor; "Mindset: The New Psychology of Success" - foundational text on growth mindset; decades of research transforming education worldwide
+- **Best For:** Educators teaching resilience, teachers working with struggling learners, education consultants focusing on student motivation, instructional coaches
+- **Key Frameworks:** Growth mindset framework, effective praise strategies, challenge reframing, neuroplasticity education
+- **Questions to Ask Her:**
+  - How do I teach students to view challenges as opportunities for brain growth?
+  - How do I shift fixed mindset students to growth mindset orientation?
+  - What praise strategies actually build resilience vs. undermine it?
+  - How do I help teachers adopt growth mindset in their own practice?
+
+---
+
+### **Dr. Stuart Shanker**
+- **Core Expertise:** Self-regulation science, stress management in children, neuroscience of learning, emotional regulation development
+- **Primary Methodologies:** Self-Reg framework (biological, emotional, cognitive, social, prosocial domains), stress identification, regulation strategy development
+- **What She Built:** The MEHRIT Centre; Self-Reg framework adopted globally; research translating neuroscience into practical classroom tools
+- **Best For:** Elementary educators, teachers managing challenging behaviors, special education teachers, early childhood educators
+- **Key Frameworks:** Self-Reg five-domain framework, stress recognition, regulation vs. self-control distinction, brain-body connection
+- **Questions to Ask Him:**
+  - How do I help young students manage stress and develop better self-regulation?
+  - What's the difference between self-regulation and self-control in 2nd graders?
+  - How do I identify hidden stressors affecting student behavior?
+  - What practical tools can I use daily to teach emotional regulation?
+
+---
+
+### **Dr. Becky Bailey**
+- **Core Expertise:** Social-emotional learning, classroom management, Conscious Discipline methodology, teacher-child relationship building
+- **Primary Methodologies:** Conscious Discipline framework (safety, connection, problem-solving), brain state model, School Family structure, conflict resolution rituals
+- **What She Built:** Conscious Discipline - comprehensive SEL program used in thousands of schools; founder of Loving Guidance Inc.; transformed classroom climate approach
+- **Best For:** Elementary teachers, early childhood educators, teachers reducing behavioral referrals, educators building positive classroom culture
+- **Key Frameworks:** Conscious Discipline framework, brain state model (survival, emotional, executive), School Family rituals, conflict resolution protocols
+- **Questions to Ask Her:**
+  - How do I teach social-emotional skills while improving classroom climate?
+  - How do I reduce behavioral referrals through preventative relationship-building?
+  - What daily rituals create safe, connected classroom communities?
+  - How do I handle challenging behaviors using brain-based strategies?
+
+---
+
+### **Lucy Calkins**
+- **Core Expertise:** Literacy education, reading/writing workshop model, reading development, curriculum design for literacy
+- **Primary Methodologies:** Units of Study framework, balanced literacy approach, reading workshop structure, conferring strategies, guided reading
+- **What She Built:** Teachers College Reading and Writing Project (Columbia University); Units of Study curriculum used in thousands of schools; decades of literacy research and teacher training
+- **Best For:** Literacy teachers, reading specialists, elementary educators, curriculum designers, teachers supporting struggling readers
+- **Key Frameworks:** Reading/Writing Workshop model, Units of Study, balanced literacy, conferring techniques, literacy assessment
+- **Questions to Ask Her:**
+  - How do I better understand reading development in 2nd graders?
+  - How do I effectively support struggling readers using workshop model?
+  - What conferring strategies help me differentiate literacy instruction?
+  - How do I design literacy curriculum that meets diverse student needs?
+
+---
+
+### **Debbie Miller**
+- **Core Expertise:** Reading comprehension instruction, thinking strategies for young readers, literacy coaching, primary literacy development
+- **Primary Methodologies:** Comprehension strategy instruction, thinking aloud, gradual release model, sensory imagery, questioning techniques
+- **What She Built:** "Reading with Meaning" and "Teaching with Intention" - influential primary literacy texts; literacy consultant transforming comprehension instruction
+- **Best For:** Primary grade teachers, reading interventionists, literacy coaches, teachers working with struggling comprehenders
+- **Key Frameworks:** Comprehension strategies (questioning, inferring, visualizing, determining importance), gradual release, think-aloud modeling
+- **Questions to Ask Her:**
+  - How do I help 2nd graders who struggle to understand what they read?
+  - What specific strategies improve comprehension in young learners?
+  - How do I model thinking strategies effectively for primary students?
+  - How do I gradually release responsibility while teaching comprehension?
+
+---
+
+### **Dr. Ross Greene**
+- **Core Expertise:** Collaborative problem-solving, challenging student behaviors, lagging skills identification, non-punitive discipline
+- **Primary Methodologies:** Collaborative & Proactive Solutions (CPS) model, "kids do well if they can" philosophy, lagging skills assessment, Plan B conversations
+- **What He Built:** "The Explosive Child" and "Lost at School" - transformative texts on challenging behaviors; Lives in the Balance organization; CPS model used globally
+- **Best For:** Teachers with challenging students, special education teachers, school psychologists, educators seeking alternatives to punitive discipline
+- **Key Frameworks:** CPS (Collaborative & Proactive Solutions), lagging skills identification, unsolved problems assessment, Plan B collaborative conversations
+- **Questions to Ask Him:**
+  - How do I identify underlying skill deficits behind challenging behaviors?
+  - How do I use collaborative problem-solving instead of rewards/consequences?
+  - What lagging skills typically cause behavior problems in 2nd grade?
+  - How do I have Plan B conversations that actually solve problems?
+
+---
+
+### **Dr. Ruby Payne**
+- **Core Expertise:** Poverty's impact on education, socioeconomic understanding, hidden rules of class, educational equity frameworks
+- **Primary Methodologies:** Framework for Understanding Poverty, hidden rules analysis, resource assessment, relationship-building across class differences
+- **What She Built:** "A Framework for Understanding Poverty" - widely used text in education; aha! Process training organization; decades of research on class and learning
+- **Best For:** Teachers in high-poverty schools, educators seeking equity understanding, teachers working with diverse socioeconomic backgrounds, urban educators
+- **Key Frameworks:** Framework for Understanding Poverty, hidden rules of class (poverty, middle class, wealth), resource types (financial, emotional, mental, spiritual, physical, support systems)
+- **Questions to Ask Her:**
+  - How do poverty and different social backgrounds affect learning and behavior?
+  - What are the hidden rules of class I need to understand?
+  - How do I build relationships across socioeconomic differences?
+  - What resources do students from poverty need most to succeed?
+
+---
+
+### **Cynthia Ulrich Tobias**
+- **Core Expertise:** Learning styles, individual learning differences, parent-teacher communication, personalized instruction strategies
+- **Primary Methodologies:** Learning Style framework, strength-based teaching, differentiation through learning preferences, communication style matching
+- **What She Built:** "The Way They Learn" - bestselling learning styles resource; Applied Learning Styles consulting; decades of teacher and parent training
+- **Best For:** Elementary teachers, differentiation-focused educators, special education teachers, teachers maximizing individual student potential
+- **Key Frameworks:** Learning style identification (concrete vs. abstract, sequential vs. random), communication style awareness, strength-based instruction
+- **Questions to Ask Her:**
+  - How do I identify and work with different learning styles in my classroom?
+  - How do I differentiate instruction based on learning preferences?
+  - How do I communicate with parents about their child's unique learning style?
+  - How do I maximize each child's potential through personalized approaches?
+
+---
+
+### **Jim Fay**
+- **Core Expertise:** Love and Logic discipline, natural consequences, student responsibility development, practical classroom management
+- **Primary Methodologies:** Love and Logic framework, empathy with consequences, thinking words vs. fighting words, shared control, enforceable limits
+- **What He Built:** Co-founder of Love and Logic (with Dr. Foster Cline); "Teaching with Love and Logic" - widely adopted discipline system; transformed teacher-student relationship dynamics
+- **Best For:** Elementary teachers, classroom management challenges, teachers building student responsibility, educators seeking non-authoritarian discipline
+- **Key Frameworks:** Love and Logic framework, empathy-based consequences, enforceable statements, shared control, decision-making skill development
+- **Questions to Ask Him:**
+  - What Love and Logic strategies work best with young children?
+  - How do I build responsibility and decision-making skills in 2nd graders?
+  - How do I give consequences with empathy instead of anger?
+  - How do I use enforceable limits that students actually respect?
+
+---
+
+### **Dr. Foster Cline**
+- **Core Expertise:** Child psychiatry, attachment theory in education, Love and Logic co-creator, behavioral root cause analysis
+- **Primary Methodologies:** Attachment-based understanding, Love and Logic framework, empathy-consequence balance, trust-building in educational settings
+- **What He Built:** Co-founder of Love and Logic; child psychiatry practice; "Parenting with Love and Logic" and educational series; attachment and behavior expertise
+- **Best For:** Teachers working with attachment issues, educators understanding trauma impact, elementary teachers, special education professionals
+- **Key Frameworks:** Attachment theory in classroom context, Love and Logic discipline, empathy and accountability balance, trust-building strategies
+- **Questions to Ask Him:**
+  - How do attachment issues impact learning and behavior in elementary students?
+  - How do I recognize and work with students who have attachment challenges?
+  - What's the relationship between early childhood attachment and classroom behavior?
+  - How do I build trust with students who have experienced trauma or disrupted attachment?
+
+---
+
 ## INVESTMENT & FINANCIAL EXPERTS
 
 ### **Burton Malkiel**
@@ -328,6 +568,23 @@ The skill helps users understand which expert to call for specific types of ques
 - Valuation & stock analysis → Aswath Damodaran, Larry Swedroe
 - Retirement & financial planning → Christine Benz, Ben Carlson
 - Behavioral investing & emotional decisions → Ben Carlson, William Bernstein
+- Teacher-to-entrepreneur transition → Jennifer Gonzalez, Angela Watson, Matt Miller
+- Educational speaking/presenting → Dave Burgess, Todd Whitaker, Matt Miller
+- Teacher productivity & burnout → Angela Watson, Elena Aguilar
+- Educational consulting businesses → Jennifer Gonzalez, Pernille Ripp, Elena Aguilar, Todd Whitaker
+- Educational technology integration → Matt Miller, Jennifer Gonzalez
+- Educational publishing/writing → Dave Burgess, Todd Whitaker, Pernille Ripp
+- Literacy & reading development → Lucy Calkins, Debbie Miller, Pernille Ripp
+- Classroom management & discipline → Dr. Becky Bailey, Jim Fay, Dr. Foster Cline, Dr. Ross Greene
+- Social-emotional learning (SEL) → Dr. Becky Bailey, Dr. Stuart Shanker, Dr. Carol Dweck
+- Student behavior & challenging students → Dr. Ross Greene, Dr. Becky Bailey, Jim Fay, Dr. Foster Cline
+- Growth mindset & student motivation → Dr. Carol Dweck, Dr. Becky Bailey
+- Self-regulation & emotional regulation → Dr. Stuart Shanker, Dr. Becky Bailey
+- Learning styles & differentiation → Cynthia Ulrich Tobias, Debbie Miller
+- Poverty & socioeconomic impact on learning → Dr. Ruby Payne
+- Attachment & trauma-informed teaching → Dr. Foster Cline, Dr. Becky Bailey
+- Teacher coaching & professional development → Elena Aguilar, Todd Whitaker
+- Educational leadership & school culture → Todd Whitaker, Elena Aguilar
 
 ---
 
