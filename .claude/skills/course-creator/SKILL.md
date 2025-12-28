@@ -3,211 +3,249 @@ name: course-creator
 description: This skill should be used when creating comprehensive training courses and educational materials. Use for developing instructor guides, student workbooks, session plans, and complete course packages. Ideal for trade schools, corporate training, workshops, and educational programs that need structured, professional course content.
 ---
 
-# Course Creator
+# Course Creator Skill
 
 ## Overview
 
-This skill enables the creation of comprehensive training courses through a conversational, question-by-question approach. It guides educators through designing complete course packages including instructor notes, student handouts, session playbooks, and supporting documentation. The skill follows the proven structure from AI Trade School materials, adapting it to any subject or audience.
+This skill enables the creation of professional, complete course packages through a structured conversational process. It guides educators through designing comprehensive modules including instructor notes, student workbooks, session playbooks, and supporting documentation. After gathering all information through dialogue, the skill automatically generates a complete file structure with all documents ready for delivery.
 
-## Conversational Course Creation Process
+**Key Feature:** All documents are created from proven templates stored in the skill's assets folder and saved directly to `knowledge/published/` for immediate use.
 
-### Phase 1: Course Foundation
+---
 
-Begin by understanding the course requirements. Ask these questions one at a time, waiting for each answer before proceeding:
+## How This Skill Works
 
-1. **Course Subject & Topic**
-   - "What subject or topic will this course cover?"
-   - Listen for: Technical domain, skill area, academic subject
-   - Next: Determine course level based on topic complexity
+### Phase 1: Gather Course Information (Conversational)
 
-2. **Target Audience**
-   - "Who is this course designed for? Tell me about their background and experience level."
-   - Listen for: Age range, prior knowledge, professional background, technical comfort
-   - Next: Session duration based on audience attention span
+Ask questions one at a time in this order, waiting for complete answers before proceeding:
+
+1. **Module/Session Name**
+   - "What is the name of this module or session?"
+   - Use this name for all filenames
+
+2. **Course Name**
+   - "What is the name of the overall course this belongs to?"
 
 3. **Session Duration**
    - "How long will each session be? (e.g., 2 hours, 3 hours, full day)"
-   - Listen for: Time constraints, attention span, depth of content needed
-   - Next: Learning objectives based on time available
 
-4. **Primary Learning Objectives**
-   - "By the end of this course, what should participants be able to do?"
-   - Listen for: Specific skills, knowledge outcomes, practical applications
-   - Next: Session structure based on objectives
+4. **Target Audience**
+   - "Who is this course designed for? Describe their background and experience level."
 
-### Phase 2: Session Structure
+5. **Expected Number of Students**
+   - "How many students do you expect in each session?"
 
-After understanding the basics, design the session flow:
+6. **Instructor Name**
+   - "Who will be teaching this session?"
 
-5. **Session Format Preference**
-   - "Do you prefer a TEACH → BUILD → SHOWCASE structure like the AI Trade School model, or a different format?"
-   - If yes: Follow the 3-phase structure (Teach theory, Build practice, Showcase results)
-   - If no: Ask about their preferred format and adapt accordingly
-   - Next: Content breakdown
+7. **Location/Room**
+   - "Where will the session be held?"
 
-6. **Hands-on Activities**
-   - "What practical exercises or activities should participants complete?"
-   - Listen for: Number of activities, complexity, tools needed, individual vs group work
-   - Next: Material requirements
+8. **Learning Objectives** (ask one at a time)
+   - "By the end of this session, what should participants be able to do?"
+   - "Any additional learning objectives?"
+   - Continue until all objectives are captured
 
-7. **Materials & Resources**
-   - "What materials will you need? (handouts, software, equipment, etc.)"
-   - Listen for: Technology requirements, physical materials, prep work
-   - Next: Instructor support needs
+9. **Activities** (ask for each activity)
+   - "What is the name of the first activity?"
+   - "What problem or challenge will they solve?"
+   - "How long should this activity take (in minutes)?"
+   - "What is the learning goal?"
+   - "What are the step-by-step instructions?" (ask one at a time)
+   - "What indicates success?" (ask one at a time for success indicators)
+   - "What reflection question should they answer?"
+   - "What's a common issue students face with this activity, and how should you address it?"
+   - Repeat for each activity
 
-### Phase 3: Documentation Creation
+10. **Additional Files/Assets**
+    - "Will you be including any additional files with this module? (e.g., slides, templates, reference documents)"
+    - This helps set expectations for supplementary materials
 
-With the course design clear, create the complete package:
+### Phase 2: Generate Files (Automatic)
 
-8. **Package Components Confirmation**
-   - "Based on our discussion, I'll create: [list components]. Does this cover everything you need?"
-   - Typical components:
-     - Instructor Notes (complete scripts, timing, troubleshooting)
-     - Student Handout (workbook, activities, reflection questions)
-     - Session Playbook (quick reference for delivery)
-     - Complete Package Guide (how-to documentation)
-   - Next: Begin document creation
+After gathering all information, generate the complete course package:
 
-## Document Templates & Structure
+**The file structure created will be:**
 
-### Instructor Notes Format
-
-Follow this structure for comprehensive instructor guidance:
-
-```markdown
-# SESSION [X] INSTRUCTOR NOTES
-## [Session Title]
-
-### Pre-Session Checklist
-- Timeline: What to prepare and when
-- Materials: Everything needed for the session
-- Tech Setup: Requirements and testing procedures
-
-### Phase 1: TEACH ([Time] minutes)
-- Welcome & Introduction ([Time] min)
-  - Complete script for opening
-  - Icebreaker activities
-- Core Concepts ([Time] min)
-  - Key talking points
-  - Visual aids/demos needed
-- Examples & Stories ([Time] min)
-  - Relevant career stories
-  - Real-world applications
-
-### Phase 2: BUILD ([Time] minutes)
-- Activity [Number]: [Title] ([Time] min)
-  - Problem statement
-  - Step-by-step instructions
-  - Expected outcomes
-  - Troubleshooting tips
-
-### Phase 3: SHOWCASE ([Time] minutes)
-- Peer sharing format
-  - How to select participants
-  - Celebration techniques
-  - Feedback guidelines
-
-### Troubleshooting Guide
-- Common issues and solutions
-- Tech backup plans
-- Time management strategies
+```
+knowledge/published/[MODULE_NAME]/
+├── README_MANIFEST.md
+├── [MODULE_NAME]_INSTRUCTOR_NOTES.md
+├── [MODULE_NAME]_STUDENT_HANDOUT.md
+├── [MODULE_NAME]_PLAYBOOK.md
+└── [MODULE_NAME]_COMPLETE_PACKAGE_GUIDE.md
 ```
 
-### Student Handout Format
+**What each file contains:**
 
-Create engaging workbook materials:
+- **README_MANIFEST.md** - Overview of the package, instructions for use, setup timeline, and quick start guide
+- **[MODULE_NAME]_INSTRUCTOR_NOTES.md** - Complete teaching guide with scripts, timing, troubleshooting, and detailed activity instructions
+- **[MODULE_NAME]_STUDENT_HANDOUT.md** - Interactive workbook for students with activities, reflection questions, and space for work
+- **[MODULE_NAME]_PLAYBOOK.md** - One-page quick reference for delivery with timing roadmap and key messages
+- **[MODULE_NAME]_COMPLETE_PACKAGE_GUIDE.md** - Comprehensive guide on how to use each document effectively
 
-```markdown
-# STUDENT WORKBOOK
-## Session [X]: [Title]
+---
 
-### Today's Activities
-- Brief overview of what we'll accomplish
-- Space for notes and reflections
+## Assets and Templates
 
-### Activity [Number]: [Title]
-**Problem:** [Clear problem statement]
-**Instructions:** [Step-by-step guidance]
-**Your Response:** [Space for work]
-**Reflection:** [Question for deeper thinking]
+This skill uses proven templates from the `assets/templates/` directory:
 
-### Key Terms
-- Glossary of important concepts
-- Simple definitions
-- Space for personal notes
+- `instructor_notes_template.md` - Framework for complete instructor guides
+- `student_handout_template.md` - Student workbook structure
+- `session_playbook_template.md` - One-page quick reference format
+- `readme_manifest_template.md` - Package overview and instructions
 
-### Portfolio Summary
-- What you created today
-- How you can use this
-- Next steps for learning
-```
+**How templates are used:**
+- User answers provide specific content (module name, activities, objectives)
+- Templates provide the structure and format
+- Python script combines them into complete documents
+- All placeholders (like [Module Name], [Activity Name]) are replaced with user-provided information
 
-### Session Playbook Format
+### Example Assets Structure
 
-One-page quick reference for delivery:
+The skill includes an example package at `assets/examples/session-1a-example/` showing exactly how a completed package is organized and formatted. Refer to this as a reference for the structure and quality level.
 
-```markdown
-# SESSION [X] PLAYBOOK
-## One-Page Quick Reference
+---
 
-## Timing Roadmap
-| Time | Phase | Activity | Instructor Role |
-|------|-------|----------|----------------|
+## Implementation Process
 
-## Key Messages
-- Critical points to emphasize
-- Transition phrases
-- Energy cues
+1. **Ask questions conversationally** - One question at a time, waiting for complete answers
+2. **Never overwhelm** - Never ask multiple questions in a single message
+3. **Use dynamic naming** - Always ask for the actual module/session name, not fixed numbers
+4. **Gather activity details** - Each activity needs problem statement, steps, success indicators, and reflection question
+5. **Ask about supplementary files** - Understand if additional assets will be included
+6. **Generate complete package** - Run the Python script to create all files from templates
+7. **Save to correct location** - Automatically save to `knowledge/published/[MODULE_NAME]/`
+8. **Confirm completion** - Show user the file location and structure created
 
-## Activity Quick Reference
-- Brief description of each activity
-- Time warnings
-- Success indicators
+---
 
-## Red Flags Checklist
-- Common problems to watch for
-- Quick interventions
-- Backup plans
+## Example Workflow
 
-## Success Checklist
-- What completion looks like
-- Celebration moments
-- Next session prep
-```
+**User:** "I need to create a course on AI Basics for Teachers"
 
-## Resources
+**You:** "Great! I'll help you create a complete course package. Let's start with the basics. What is the name of this module or session?"
 
-### references/
-Store course creation templates and examples:
-- `course_templates.md` - Additional format variations
-- `assessment_strategies.md` - Different approaches to measuring learning
-- `engagement_techniques.md` - Methods for maintaining energy and participation
+**User:** "AI Fundamentals for Educators"
 
-### assets/
-Include reusable course materials:
-- `templates/` - Markdown templates for each document type
-- `examples/` - Sample completed courses for reference
-- `worksheets/` - Generic activity worksheets that can be adapted
+**You:** "Perfect! AI Fundamentals for Educators will be the name for all the documents. What is the name of the overall course this belongs to?"
 
-### scripts/
-Automate course material generation:
-- `generate_course_package.py` - Creates all documents from course specifications
-- `format_handout.py` - Formats student workbooks consistently
-- `validate_timing.py` - Checks session timing and pacing
+**User:** "AI for Teachers"
 
-## Implementation Guidelines
+**You:** "Got it. How long will each session be? (e.g., 2 hours, 3 hours, full day)"
 
-1. **Ask questions one at a time** - Never overwhelm with multiple questions
-2. **Wait for complete answers** - Ensure each response is fully understood
-3. **Reference the AI Trade School materials** - Use the Session 1A package as a proven model
-4. **Adapt, don't just copy** - Tailor the structure to each unique course
-5. **Create complete packages** - Ensure all necessary documents are generated
-6. **Include practical details** - Timing, materials, troubleshooting, and success metrics
+[...continues one question at a time until all information is gathered...]
+
+**You:** [After all information collected]
+
+"Perfect! I have all the information needed. Let me generate your complete course package..."
+
+[Runs the Python script which creates:]
+- README_MANIFEST.md
+- AI_FUNDAMENTALS_FOR_EDUCATORS_INSTRUCTOR_NOTES.md
+- AI_FUNDAMENTALS_FOR_EDUCATORS_STUDENT_HANDOUT.md
+- AI_FUNDAMENTALS_FOR_EDUCATORS_PLAYBOOK.md
+- AI_FUNDAMENTALS_FOR_EDUCATORS_COMPLETE_PACKAGE_GUIDE.md
+
+**You:** "Your course package has been created! Here's what was generated:
+
+📁 Location: `/Users/cliftoncanady/Web Apps/ai-teachers/knowledge/published/AI_FUNDAMENTALS_FOR_EDUCATORS/`
+
+📦 Files created:
+- README_MANIFEST.md - Start here for overview and instructions
+- AI_FUNDAMENTALS_FOR_EDUCATORS_INSTRUCTOR_NOTES.md - Complete teaching guide
+- AI_FUNDAMENTALS_FOR_EDUCATORS_STUDENT_HANDOUT.md - Student workbook
+- AI_FUNDAMENTALS_FOR_EDUCATORS_PLAYBOOK.md - Quick reference guide
+- AI_FUNDAMENTALS_FOR_EDUCATORS_COMPLETE_PACKAGE_GUIDE.md - Usage instructions
+
+Next steps:
+1. Review the README_MANIFEST for a quick overview
+2. Customize the documents as needed
+3. Print student handouts (one per student)
+4. Print and laminate the Playbook for easy reference during delivery
+5. You're ready to teach!"
+
+---
+
+## Key Guidelines
+
+1. **Ask ONE question at a time** - Never ask multiple questions in a single response
+2. **Wait for complete answers** - Ensure you understand each response fully before moving to the next question
+3. **Use dynamic module names** - Always ask what the user wants to call the module; don't assume a fixed naming scheme
+4. **Capture activity details thoroughly** - Each activity needs complete information for quality output
+5. **Reference proven templates** - Explain that templates are from proven educational structures
+6. **Save to knowledge/published/** - All packages automatically save to the correct location
+7. **Document the file structure** - Make it clear what files will be created and where
+8. **Ask about supplementary materials** - Understand if additional assets will be included with the package
+9. **Provide clear next steps** - After generation, give the user clear instructions on what to do next
+
+---
 
 ## Special Considerations
 
-- **Adult Learners**: Focus on practical application, respect their experience
-- **Technical Subjects**: Include hands-on practice, progress from simple to complex
-- **Soft Skills**: Incorporate role-play, real-world scenarios, peer feedback
-- **Short Sessions**: Maximize engagement, limit theoretical content
-- **Multi-Session Courses**: Build progression, reference previous learning
+### For Different Course Types
+
+**Technical Courses:**
+- Include hands-on practice activities
+- Provide troubleshooting guides
+- Include backup plans for tech failures
+
+**Soft Skills Courses:**
+- Incorporate role-play scenarios
+- Include peer feedback components
+- Add personal reflection opportunities
+
+**Trade School Programs:**
+- Focus on practical skill development
+- Include portfolio artifacts
+- Emphasize hands-on learning
+
+**Corporate Training:**
+- Align with business objectives
+- Include measurement of success
+- Provide follow-up support guidance
+
+### Adaptations
+
+- The structure (Teach → Build → Showcase) can be customized based on user preference
+- Activity timing automatically adjusts based on total session duration
+- Success indicators are customized per activity
+- Troubleshooting guides reflect the specific content and context
+
+---
+
+## What Users Get
+
+✅ Complete, professionally-formatted course materials
+✅ Instructor guide with exact scripts and timing
+✅ Student workbook ready to print and distribute
+✅ One-page playbook for quick reference during delivery
+✅ Comprehensive usage guide
+✅ Package manifest with instructions
+✅ All files saved to knowledge/published/ for immediate access
+✅ Ready-to-deliver materials on day one
+
+---
+
+## Quality Assurance
+
+The generated packages include:
+- ✅ Complete timing for all phases
+- ✅ Detailed activity instructions
+- ✅ Troubleshooting guides
+- ✅ Success metrics and indicators
+- ✅ Pre-session and post-session checklists
+- ✅ Student reflection prompts
+- ✅ Portfolio artifacts checklist
+- ✅ Backup plans for common issues
+
+---
+
+## Support Materials
+
+This skill includes:
+- **Templates** in `assets/templates/` - Proven structures for each document type
+- **Examples** in `assets/examples/` - Complete reference packages showing quality level
+- **References** in `references/` - Additional templates and strategies
+- **Scripts** - Python script that handles all file generation and formatting
+

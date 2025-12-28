@@ -3,13 +3,15 @@
 Course Package Generator
 
 This script generates a complete course package based on course specifications.
-It creates instructor notes, student handouts, session playbooks, and a package guide.
+It creates instructor notes, student handouts, session playbooks, a package guide,
+and a README manifest. Files are saved to knowledge/published/ directory.
 """
 
 import os
 import sys
 from datetime import datetime
 from pathlib import Path
+
 
 def load_template(template_name):
     """Load a template file from the assets/templates directory."""
@@ -19,6 +21,27 @@ def load_template(template_name):
             return f.read()
     return None
 
+
+def create_readme_manifest(course_data):
+    """Generate README manifest from template."""
+    template = load_template("readme_manifest")
+    if not template:
+        return "# README Manifest Template Not Found"
+
+    content = template
+    content = content.replace("[Date]", course_data.get("creation_date", datetime.now().strftime('%B %d, %Y')))
+    content = content.replace("[Module Name]", course_data.get("module_name", "Untitled Module"))
+    content = content.replace("[Course Name]", course_data.get("course_name", "Course"))
+    content = content.replace("[Duration]", course_data.get("duration", "TBD"))
+    content = content.replace("[Audience Description]", course_data.get("audience", "Learners"))
+
+    # Replace all [MODULE_NAME] placeholders with actual module name
+    module_name_upper = course_data.get("module_name", "MODULE").upper().replace(" ", "_")
+    content = content.replace("[MODULE_NAME]", module_name_upper)
+
+    return content
+
+
 def create_instructor_notes(course_data):
     """Generate instructor notes from template and course data."""
     template = load_template("instructor_notes")
@@ -27,10 +50,13 @@ def create_instructor_notes(course_data):
 
     # Replace placeholders with course-specific data
     content = template
-    content = content.replace("[X]", course_data.get("session_number", "1"))
-    content = content.replace("[Session Title]", course_data.get("session_title", "Introduction"))
-    content = content.replace("[Date]", course_data.get("date", "TBD"))
+    module_name = course_data.get("module_name", "Introduction")
+    content = content.replace("[X]", module_name)
+    content = content.replace("[Session Title]", course_data.get("module_name", "Introduction"))
+    content = content.replace("[Date]", course_data.get("creation_date", "TBD"))
     content = content.replace("[Hours/Minutes]", course_data.get("duration", "3 hours"))
+    content = content.replace("[Name]", course_data.get("instructor_name", "[Instructor Name]"))
+    content = content.replace("[Location]", course_data.get("location", "[Location TBD]"))
 
     # Add session-specific activities
     activities = course_data.get("activities", [])
@@ -49,9 +75,11 @@ def create_instructor_notes(course_data):
         for indicator in activity.get('success_indicators', ['Completion']):
             activity_section += f"- {indicator}\n"
 
-    content = content.replace("[Repeat structure for each activity]", activity_section)
+    if activity_section:
+        content = content.replace("[Repeat structure for each activity]", activity_section)
 
     return content
+
 
 def create_student_handout(course_data):
     """Generate student handout from template and course data."""
@@ -60,15 +88,17 @@ def create_student_handout(course_data):
         return "# Student Handout Template Not Found"
 
     content = template
-    content = content.replace("[X]", course_data.get("session_number", "1"))
-    content = content.replace("[Session Title]", course_data.get("session_title", "Introduction"))
+    module_name = course_data.get("module_name", "Introduction")
+    content = content.replace("[X]", module_name)
+    content = content.replace("[Session Title]", course_data.get("module_name", "Introduction"))
 
     # Add learning objectives
     objectives = course_data.get("learning_objectives", [])
     obj_section = ""
     for i, obj in enumerate(objectives, 1):
         obj_section += f"- {obj}\n"
-    content = content.replace("- [Learning objective 1]\n- [Learning objective 2]\n- [Learning objective 3]", obj_section)
+    if obj_section:
+        content = content.replace("- [Learning objective 1]\n- [Learning objective 2]\n- [Learning objective 3]", obj_section)
 
     # Add activities
     activities = course_data.get("activities", [])
@@ -96,12 +126,14 @@ _________________________
 """
 
     # Replace placeholder activities
-    placeholder_start = content.find("## ACTIVITY 1:")
-    placeholder_end = content.find("## KEY TERMS")
-    if placeholder_start > -1 and placeholder_end > -1:
-        content = content[:placeholder_start] + activity_sections + "\n" + content[placeholder_end:]
+    if activity_sections:
+        placeholder_start = content.find("## ACTIVITY 1:")
+        placeholder_end = content.find("## KEY TERMS")
+        if placeholder_start > -1 and placeholder_end > -1:
+            content = content[:placeholder_start] + activity_sections + "\n" + content[placeholder_end:]
 
     return content
+
 
 def create_session_playbook(course_data):
     """Generate session playbook from template and course data."""
@@ -110,8 +142,9 @@ def create_session_playbook(course_data):
         return "# Session Playbook Template Not Found"
 
     content = template
-    content = content.replace("[X]", course_data.get("session_number", "1"))
-    content = content.replace("[Name]", course_data.get("session_title", "Introduction"))
+    module_name = course_data.get("module_name", "Introduction")
+    content = content.replace("[X]", module_name)
+    content = content.replace("[Name]", course_data.get("module_name", "Introduction"))
 
     # Calculate timing based on total duration and number of activities
     duration = course_data.get("duration_minutes", 180)
@@ -133,23 +166,30 @@ def create_session_playbook(course_data):
     # Add activity quick reference
     activity_refs = ""
     for i, activity in enumerate(activities, 1):
+        activity_time_val = activity.get('time', f'{int(duration/len(activities)) if len(activities) > 0 else 30} min')
         activity_refs += f"""
-### Activity {i}: {activity.get('name', f'Activity {i}')} (Time: {activity.get('time', f'{activity_time} min')})
+### Activity {i}: {activity.get('name', f'Activity {i}')} (Time: {activity_time_val})
 **Goal:** {activity.get('goal', 'Complete the activity')}
 **Success:** {', '.join(activity.get('success_indicators', ['Completion']))}
 **Common issue:** → {activity.get('common_issue', 'Ask for help')}
 """
 
-    content = content.replace("[Repeat structure for each activity]", activity_refs)
+    if activity_refs:
+        content = content.replace("[Repeat structure for each activity]", activity_refs)
 
     return content
 
+
 def create_package_guide(course_data):
     """Create a comprehensive package guide."""
-    guide = f"""# SESSION {course_data.get('session_number', '1')} COMPLETE PACKAGE GUIDE
-## {course_data.get('course_title', 'Course')} - Session {course_data.get('session_number', '1')}
+    module_name = course_data.get("module_name", "Module")
+    module_name_upper = module_name.upper().replace(" ", "_")
+
+    guide = f"""# {module_name_upper} - COMPLETE PACKAGE GUIDE
 
 **Package Date:** {datetime.now().strftime('%B %d, %Y')}
+**Module/Session Name:** {module_name}
+**Course:** {course_data.get('course_name', 'Course')}
 **Session Duration:** {course_data.get('duration', '3 hours')}
 **Target Audience:** {course_data.get('audience', 'Adult learners')}
 
@@ -157,12 +197,13 @@ def create_package_guide(course_data):
 
 ## 📦 WHAT'S IN THIS PACKAGE
 
-### Complete Documents ({len(os.listdir())} files)
+### Complete Documents (5 files)
 
-1. **Instructor Notes** - Complete session guide with scripts and timing
-2. **Student Handout** - Workbook with activities and reflection
-3. **Session Playbook** - One-page quick reference for delivery
-4. **Package Guide** - This document - how to use all materials
+1. **{module_name_upper}_INSTRUCTOR_NOTES.md** - Complete session guide with scripts and timing
+2. **{module_name_upper}_STUDENT_HANDOUT.md** - Workbook with activities and reflection
+3. **{module_name_upper}_PLAYBOOK.md** - One-page quick reference for delivery
+4. **{module_name_upper}_COMPLETE_PACKAGE_GUIDE.md** - This document
+5. **README_MANIFEST.md** - Overview and instructions
 
 ---
 
@@ -170,8 +211,8 @@ def create_package_guide(course_data):
 
 ### Instructor Notes
 - **Read:** 2 days before session
-- **Use:** During session preparation
-- **Contains:** Complete scripts, timing, troubleshooting
+- **Use:** During session preparation and as backup reference
+- **Contains:** Complete scripts, timing, troubleshooting, all activities
 
 ### Student Handout
 - **Print:** One per student
@@ -180,12 +221,16 @@ def create_package_guide(course_data):
 
 ### Session Playbook
 - **Print:** One copy for instructor
-- **Laminate:** For durability
+- **Laminate:** For durability (optional)
 - **Use:** During session for quick reference
 
-### Package Guide
+### Complete Package Guide
 - **Read:** Once before preparation
 - **Reference:** For questions about using materials
+
+### README Manifest
+- **Read:** For overview and quick start guide
+- **Use:** For complete package organization details
 
 ---
 
@@ -247,6 +292,7 @@ You'll know this session worked if:
 If you need help:
 - Review the troubleshooting guide in Instructor Notes
 - Check the Session Playbook for quick fixes
+- Refer to README_MANIFEST for package overview
 - Remember: flexibility is key - adapt as needed
 
 ---
@@ -256,6 +302,31 @@ If you need help:
 
     return guide
 
+
+def save_package(course_data, documents):
+    """Save package to knowledge/published/ directory."""
+
+    # Determine output directory
+    module_name = course_data.get("module_name", "Module")
+    module_name_sanitized = module_name.replace(" ", "_").replace("-", "_").upper()
+
+    # Get the project root (go up from scripts folder)
+    project_root = Path(__file__).parent.parent.parent.parent.parent
+    published_dir = project_root / "knowledge" / "published" / module_name_sanitized
+
+    # Create directory if it doesn't exist
+    published_dir.mkdir(parents=True, exist_ok=True)
+
+    # Save each document
+    for filename, content in documents.items():
+        filepath = published_dir / filename
+        with open(filepath, 'w') as f:
+            f.write(content)
+        print(f"✅ Created {filename}")
+
+    return published_dir
+
+
 def main():
     """Main function to generate course package."""
     print("🎓 Course Package Generator")
@@ -263,90 +334,96 @@ def main():
 
     # Get course information
     course_data = {
-        "session_number": input("Session number (e.g., 1A): "),
-        "session_title": input("Session title: "),
-        "course_title": input("Course title: "),
-        "duration": input("Session duration (e.g., 3 hours): "),
-        "audience": input("Target audience: "),
-        "expected_students": input("Expected number of students: "),
+        "module_name": input("\n📝 Module/Session Name: ").strip(),
+        "course_name": input("📚 Course Name: ").strip(),
+        "duration": input("⏱️  Session Duration (e.g., 3 hours): ").strip(),
+        "audience": input("👥 Target Audience: ").strip(),
+        "expected_students": input("📊 Expected Number of Students: ").strip(),
+        "instructor_name": input("👨‍🏫 Instructor Name: ").strip(),
+        "location": input("📍 Location/Room: ").strip(),
+        "creation_date": datetime.now().strftime('%B %d, %Y'),
         "learning_objectives": [],
-        "activities": []
+        "activities": [],
+        "additional_files": []
     }
 
     # Convert duration to minutes for calculations
     duration_str = course_data["duration"]
-    if "hour" in duration_str:
-        hours = int(duration_str.split()[0])
-        course_data["duration_minutes"] = hours * 60
+    if "hour" in duration_str.lower():
+        try:
+            hours = int(duration_str.split()[0])
+            course_data["duration_minutes"] = hours * 60
+        except:
+            course_data["duration_minutes"] = 180
     else:
         course_data["duration_minutes"] = 180  # Default to 3 hours
 
     # Get learning objectives
-    print("\nEnter learning objectives (one per line, empty line to finish):")
+    print("\n📖 Learning Objectives (one per line, empty line to finish):")
     while True:
-        obj = input("- ").strip()
+        obj = input("  - ").strip()
         if not obj:
             break
         course_data["learning_objectives"].append(obj)
 
     # Get activities
-    print("\nEnter activities (name, problem, time in minutes):")
+    print("\n🎯 Activities (enter name, problem, time in minutes):")
     while True:
-        print("\nActivity (or press Enter to finish):")
-        name = input("  Name: ").strip()
+        print("\n  Activity (or press Enter to finish):")
+        name = input("    Name: ").strip()
         if not name:
             break
 
         activity = {
             "name": name,
-            "problem": input("  Problem/challenge: ").strip(),
-            "time": input("  Time (minutes): ").strip(),
-            "goal": input("  Learning goal: ").strip()
+            "problem": input("    Problem/challenge: ").strip(),
+            "time": input("    Time (minutes): ").strip(),
+            "goal": input("    Learning goal: ").strip()
         }
 
         # Get steps
         activity["steps"] = []
-        print("  Steps (one per line, empty line to finish):")
+        print("    Steps (one per line, empty line to finish):")
         while True:
-            step = input(f"    Step {len(activity['steps']) + 1}: ").strip()
+            step = input(f"      Step {len(activity['steps']) + 1}: ").strip()
             if not step:
                 break
             activity["steps"].append(step)
 
         # Get success indicators
         activity["success_indicators"] = []
-        print("  Success indicators (one per line, empty line to finish):")
+        print("    Success indicators (one per line, empty line to finish):")
         while True:
-            indicator = input("    Indicator: ").strip()
+            indicator = input("      Indicator: ").strip()
             if not indicator:
                 break
             activity["success_indicators"].append(indicator)
 
-        activity["reflection_question"] = input("  Reflection question: ").strip()
-        activity["common_issue"] = input("  Common issue and solution: ").strip()
+        activity["reflection_question"] = input("    Reflection question: ").strip()
+        activity["common_issue"] = input("    Common issue and solution: ").strip()
 
         course_data["activities"].append(activity)
+
+    # Ask about additional files/assets
+    print("\n📎 Additional Files or Assets")
+    print("   Will you be including any additional files with this module?")
+    additional = input("   (e.g., slides, templates, reference docs - describe): ").strip()
+    if additional:
+        course_data["additional_files"] = [additional]
 
     # Generate documents
     print("\n📄 Generating documents...")
 
-    # Create output directory
-    output_dir = Path(f"SESSION_{course_data['session_number']}_Package")
-    output_dir.mkdir(exist_ok=True)
-
-    # Generate each document
     documents = {
-        "INSTRUCTOR_NOTES.md": create_instructor_notes(course_data),
-        "STUDENT_HANDOUT.md": create_student_handout(course_data),
-        "SESSION_PLAYBOOK.md": create_session_playbook(course_data),
-        "PACKAGE_GUIDE.md": create_package_guide(course_data)
+        "README_MANIFEST.md": create_readme_manifest(course_data),
+        f"{course_data['module_name'].upper().replace(' ', '_')}_INSTRUCTOR_NOTES.md": create_instructor_notes(course_data),
+        f"{course_data['module_name'].upper().replace(' ', '_')}_STUDENT_HANDOUT.md": create_student_handout(course_data),
+        f"{course_data['module_name'].upper().replace(' ', '_')}_PLAYBOOK.md": create_session_playbook(course_data),
+        f"{course_data['module_name'].upper().replace(' ', '_')}_COMPLETE_PACKAGE_GUIDE.md": create_package_guide(course_data)
     }
 
-    for filename, content in documents.items():
-        filepath = output_dir / filename
-        with open(filepath, 'w') as f:
-            f.write(content)
-        print(f"✅ Created {filename}")
+    # Save to published directory
+    output_dir = save_package(course_data, documents)
 
     print(f"\n🎉 Course package created successfully!")
     print(f"📁 Location: {output_dir.absolute()}")
@@ -355,6 +432,13 @@ def main():
     print("2. Customize content as needed")
     print("3. Print student handouts and instructor playbook")
     print("4. Prepare for your session!")
+
+    if course_data["additional_files"]:
+        print("\n💡 Additional files you mentioned:")
+        for f in course_data["additional_files"]:
+            print(f"   • {f}")
+        print("\n   Add these files to the package directory when ready.")
+
 
 if __name__ == "__main__":
     main()
