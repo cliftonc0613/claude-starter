@@ -216,16 +216,17 @@ The skill searches this database to recommend experts whose proven methodologies
 ## CONTENT & MEDIA PRODUCTION EXPERTS
 
 ### **Will Stewart**
-- **Core Expertise:** Cinematography, commercial video production, brand storytelling, startup visual positioning
-- **Primary Methodologies:** Emmy Award-winning cinematography approach, strategic content production for brand authority, startup support through visual storytelling
-- **What He Built:** 9/8 Central (founded 2013) - video production and cinematography agency; Emmy Award winner; Gold ADDY Award-winning Director of Photography; helping businesses "win customers with cinematography"
-- **Best For:** Entrepreneurs building brand authority through video, startups needing professional visual content, businesses wanting to scale through storytelling, content creators in commercial/promotional spaces
-- **Key Frameworks:** Cinematography-driven brand storytelling, commercial content production strategy, startup visual positioning, Emmy-award cinematography standards
+- **Core Expertise:** Cinematography, commercial video production, social media content strategy, brand storytelling, startup visual positioning
+- **Primary Methodologies:** Emmy Award-winning cinematography approach, strategic content production for brand authority, social media content architecture, startup support through visual storytelling
+- **What He Built:** 9/8 Central (founded 2013) - video production and cinematography agency; Emmy Award winner; Gold ADDY Award-winning Director of Photography; helping businesses "win customers with cinematography" across social platforms and commercial content
+- **Best For:** Entrepreneurs building brand authority through video and social media, startups needing professional visual content, businesses wanting to scale through storytelling, content creators in commercial/promotional spaces, brands leveraging social platforms for growth
+- **Key Frameworks:** Cinematography-driven brand storytelling, commercial content production strategy, social media content strategy, startup visual positioning, Emmy-award cinematography standards
 - **Questions to Ask Him:**
-  - How do I use cinematography and video to build authentic brand authority?
-  - What's the right video content strategy for a startup with limited budget?
-  - How do I tell my brand story through commercial content that actually converts?
-  - What cinematography principles actually move customers to action?
+  - How do I use cinematography and video to build authentic brand authority across social platforms?
+  - What's the right social media video content strategy for a startup with limited budget?
+  - How do I create social media content that tells my brand story and actually converts?
+  - How do I leverage cinematography principles on social media to move customers to action?
+  - What's the best approach to repurposing commercial content across different social platforms?
 
 ---
 
@@ -580,7 +581,7 @@ The skill helps users understand which expert to call for specific types of ques
 - Trade school/WIOA questions → Hector Resendez
 - Growth/metrics questions → Y Combinator partners
 - Marketing/funnel questions → Russell Brunson, Neil Patel
-- Video/cinematography/brand storytelling questions → Will Stewart
+- Video/cinematography/social media/brand storytelling questions → Will Stewart
 - Investment & portfolio questions → Burton Malkiel, William Bernstein, Rick Ferri, Aswath Damodaran
 - Valuation & stock analysis → Aswath Damodaran, Larry Swedroe
 - Retirement & financial planning → Christine Benz, Ben Carlson
