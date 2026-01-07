@@ -117,3 +117,51 @@ Use `/agent-creator` or `/meta-agent` to generate new agent configurations. New 
 - Agents are designed to work independently and can be mixed/matched for different projects
 - Commands often chain multiple agents together for complex workflows
 - The design review system assumes Playwright MCP is available for browser automation
+
+## Code Style Guidelines
+
+### Styling Practices
+- Never, ever use inline styles; always use the global style sheet.
+
+<frontend_aesthetics>
+## Frontend Design Aesthetics
+
+**CRITICAL: Avoid generic "AI slop" aesthetics. Create distinctive, surprising frontends that delight users.**
+
+### Typography
+- Choose fonts that are beautiful, unique, and interesting
+- **Avoid generic fonts**: Arial, Inter, Roboto, system fonts
+- **Avoid overused "creative" fonts**: Space Grotesk (commonly AI-selected)
+- Opt for distinctive choices that elevate the frontend's character
+- Each project should feel intentionally designed, not template-generated
+
+### Color & Theme
+- Commit to a cohesive aesthetic using CSS variables for consistency
+- **Dominant colors with sharp accents** outperform timid, evenly-distributed palettes
+- Draw inspiration from IDE themes and cultural aesthetics
+- **Avoid clichéd schemes**: purple gradients on white backgrounds
+- Vary between light and dark themes based on context
+- Make unexpected color choices that feel genuinely designed for the specific project
+
+### Motion & Animation
+- Use animations for effects and micro-interactions
+- Prioritize CSS-only solutions for HTML projects
+- Use Motion library for React when available
+- **Focus on high-impact moments**: One well-orchestrated page load with staggered reveals (`animation-delay`) creates more delight than scattered micro-interactions
+
+### Backgrounds & Atmosphere
+- Create atmosphere and depth rather than defaulting to solid colors
+- Layer CSS gradients for visual interest
+- Use geometric patterns or contextual effects matching the overall aesthetic
+- Build environments that immerse users in the design
+
+### What to Avoid
+- Overused font families (Inter, Roboto, Arial, system fonts)
+- Clichéd color schemes (purple gradients, generic blues)
+- Predictable layouts and component patterns
+- Cookie-cutter design lacking context-specific character
+- Convergence toward "safe" AI-common choices
+
+### Design Philosophy
+Interpret creatively and make unexpected choices. Think outside the box—each frontend should feel handcrafted for its specific context, not generated from a template. Surprise and delight should be the goal.
+</frontend_aesthetics>
