@@ -118,6 +118,25 @@ Use `/agent-creator` or `/meta-agent` to generate new agent configurations. New 
 - Commands often chain multiple agents together for complex workflows
 - The design review system assumes Playwright MCP is available for browser automation
 
+## User Interaction Requirements
+
+**CRITICAL: ALWAYS use the `AskUserQuestion` tool when asking questions.**
+
+When you need to:
+- Gather user preferences or requirements
+- Clarify ambiguous instructions
+- Get decisions on implementation choices
+- Offer choices about direction to take
+- Confirm understanding before proceeding
+
+You **MUST** use the `AskUserQuestion` tool instead of asking questions in plain text. This provides:
+- Structured, selectable options for the user
+- Better UX with clickable choices
+- Clearer decision points in the workflow
+- Consistent interaction patterns
+
+**DO NOT** ask questions as plain text in your responses. Always structure questions through the tool with clear options.
+
 ## Code Style Guidelines
 
 ### Styling Practices
