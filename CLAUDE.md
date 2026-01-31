@@ -6,6 +6,49 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **starter template** repository containing pre-configured Claude Code agents, commands, and design review workflows. It serves as a reusable foundation for new projects rather than an active application codebase.
 
+---
+
+## ⚠️ CRITICAL: Development Workflow Rules
+
+**THESE RULES ARE SUPER IMPORTANT AND NON-NEGOTIABLE WHEN CODING ON ANY TASK.**
+
+1. **Plan First** - Before writing any code, think through the problem, read the codebase for relevant files, and write a plan to `tasks/todo.md`
+
+2. **Create Todo Items** - The plan must have a checklist of specific todo items that can be marked as complete as work progresses
+
+3. **Checkpoint with User** - Before beginning any work, present the plan to the user and wait for verification/approval
+
+4. **Execute & Track** - Work through todo items one at a time, marking each as complete as you finish it
+
+5. **Communicate Progress** - At every step, provide a high-level explanation of what changes you made (not verbose, just clear summaries)
+
+6. **Simplicity First** - Make every task and code change as simple as possible:
+   - Each change should impact as little code as possible
+   - Avoid massive or complex refactoring
+   - Only modify code necessary for the task
+   - Everything is about minimalism and clarity
+
+7. **Add Review Section** - When complete, add a review section to `tasks/todo.md` with:
+   - Summary of all changes made
+   - Any relevant information about the work
+   - Lessons learned or edge cases discovered
+
+8. **No Lazy Fixes** - This is non-negotiable:
+   - If there's a bug, find and fix the ROOT CAUSE
+   - Never use temporary or band-aid fixes
+   - You are a senior developer - act like one
+   - Thorough investigation = better code
+
+9. **Minimal Code Impact** - ALL fixes and changes must be as simple as humanly possible:
+   - Only impact necessary code relevant to the task
+   - Touch as little code as possible to solve the problem
+   - Your goal is to NOT introduce new bugs
+   - **SIMPLICITY IS THE PRIORITY**
+
+**These rules apply to EVERY task, EVERY PR, EVERY code change. There are no exceptions.**
+
+---
+
 ## Repository Structure
 
 ```
