@@ -18,28 +18,34 @@ This is a **starter template** repository containing pre-configured Claude Code 
 
 3. **Checkpoint with User** - Before beginning any work, present the plan to the user and wait for verification/approval
 
-4. **Execute & Track** - Work through todo items one at a time, marking each as complete as you finish it
+4. **Interview for Spec** - Read the plan file and interview the user using the `AskUserQuestion` tool:
+   - Ask about: technical implementation, UI/UX, concerns, tradeoffs
+   - Make sure the questions are not obvious
+   - Be very in-depth and continue until it's complete
+   - Then write the spec
 
-5. **Communicate Progress** - At every step, provide a high-level explanation of what changes you made (not verbose, just clear summaries)
+5. **Execute & Track** - Work through todo items one at a time, marking each as complete as you finish it
 
-6. **Simplicity First** - Make every task and code change as simple as possible:
+6. **Communicate Progress** - At every step, provide a high-level explanation of what changes you made (not verbose, just clear summaries)
+
+7. **Simplicity First** - Make every task and code change as simple as possible:
    - Each change should impact as little code as possible
    - Avoid massive or complex refactoring
    - Only modify code necessary for the task
    - Everything is about minimalism and clarity
 
-7. **Add Review Section** - When complete, add a review section to `tasks/todo.md` with:
+8. **Add Review Section** - When complete, add a review section to `tasks/todo.md` with:
    - Summary of all changes made
    - Any relevant information about the work
    - Lessons learned or edge cases discovered
 
-8. **No Lazy Fixes** - This is non-negotiable:
+9. **No Lazy Fixes** - This is non-negotiable:
    - If there's a bug, find and fix the ROOT CAUSE
    - Never use temporary or band-aid fixes
    - You are a senior developer - act like one
    - Thorough investigation = better code
 
-9. **Minimal Code Impact** - ALL fixes and changes must be as simple as humanly possible:
+10. **Minimal Code Impact** - ALL fixes and changes must be as simple as humanly possible:
    - Only impact necessary code relevant to the task
    - Touch as little code as possible to solve the problem
    - Your goal is to NOT introduce new bugs
