@@ -114,6 +114,9 @@ Run these with the `/` prefix (e.g., `/blog-research`)
 - `/weekly-checkin` - Intelligent weekly progress tracking with adaptive metrics
 - `/time-checkin` - Time-aware check-ins (morning/midday/evening)
 
+**Freelancing:**
+- `/upwork-cover-letter [project-url]` - Generate tailored Upwork cover letters from project URLs
+
 **Utilities:**
 - `/agent-creator` - Create new Claude Code agent configurations
 - `/prompt-creator` - Generate optimized prompts
