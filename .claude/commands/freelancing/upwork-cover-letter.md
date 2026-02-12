@@ -56,46 +56,55 @@ If the user selects StoryBrand or another framework, weave it into the cover let
 
 If the user wants to call out attachments, use a follow-up `AskUserQuestion` to ask what's notable about them.
 
+**Question 6** - Ask about personal philosophy or values:
+- header: "Philosophy"
+- question: "Do you have a personal philosophy or value you want woven into this cover letter?"
+- options:
+  - "Yes, I'll share it" (description: "I have a mindset, principle, or approach I want reflected in the letter")
+  - "No, keep it skills-focused" (description: "Stick to experience and qualifications only")
+
+If the user has a philosophy to share, use a follow-up `AskUserQuestion` to capture it.
+
 ---
 
 ## Step 2: Gather Project Details
 
 Fetch the Upwork project posting using the URL from Step 1.
 
-**Primary method**: Use `WebFetch` on the project URL with the prompt:
-"Extract ALL project details: job title, description, required skills, budget/hourly rate, project length, experience level required, client history (jobs posted, hire rate, total spent), client location, number of proposals, and any specific questions the client asks applicants to answer."
+**Primary method**: If the user provided the job description directly via `$ARGUMENTS` or pasted it, use that. This is the most reliable method since Upwork consistently blocks automated fetching.
 
-**Fallback 1**: If WebFetch returns a 403 or fails, use `AskUserQuestion` to offer the user to paste the job description directly:
+**Fallback**: If no job description was provided, use `AskUserQuestion` to ask the user to paste it:
 - header: "Job Details"
-- question: "I couldn't access the Upwork posting directly. How would you like to provide the job details?"
+- question: "Please paste the full job description from the Upwork posting."
 - options:
-  - "I'll paste the description" (description: "Copy and paste the job posting text here")
-  - "Try browser automation" (description: "Use Chrome to read the page — requires the tab to be open and logged in")
+  - "I'll paste it now" (description: "Copy and paste the job posting text")
+  - "I'll provide the URL to try fetching" (description: "Provide the URL and I'll attempt WebFetch, though Upwork often blocks this")
 
-**Fallback 2**: If the user chooses browser automation, use the `mcp__claude-in-chrome__` browser tools:
-1. Call `tabs_context_mcp` to get available tabs
-2. Create a new tab with `tabs_create_mcp`
-3. Navigate to the project URL
-4. Use `get_page_text` to extract the full page content
-5. Parse out: job title, full description, required skills, budget, project length, experience level, client info, and any application questions
+If the user provides a URL, attempt `WebFetch`. If it returns a 403 or fails, ask the user to paste the description directly. Do NOT attempt browser automation.
 
 **CRITICAL**: Capture the EXACT job title, ALL listed required skills, and any specific questions the client wants answered in the proposal. These drive the cover letter.
 
 ---
 
-## Step 3: Fetch Current Upwork Profile
+## Step 3: Gather Upwork Profile Context
 
-**IMPORTANT**: Always fetch the live profile every time because it changes frequently.
+**IMPORTANT**: Upwork consistently blocks automated profile fetching (403 errors). Do NOT attempt WebFetch or browser automation on the Upwork profile URL.
 
-Fetch: `https://www.upwork.com/freelancers/~01963827fee19ce894`
+Instead, use `AskUserQuestion` to gather relevant profile context directly from the user:
+- header: "Projects"
+- question: "What projects or experience from your Upwork history should I reference in this cover letter?"
+- options:
+  - "I'll list relevant projects" (description: "I'll describe specific Upwork projects, clients, or outcomes to include")
+  - "Use my resume only" (description: "Skip Upwork-specific projects and work from the resume data")
 
-**Primary method**: Use `WebFetch` with the prompt:
-"Extract ALL freelancer profile details: name, professional title, overview/bio, hourly rate, job success score, total earnings, skills listed, work history (job titles, client feedback, dates), portfolio items, certifications, and any specializations."
+If the user provides project details, incorporate them into the cover letter. If they choose resume only, proceed with resume data from Step 4.
 
-**Fallback**: If WebFetch returns a 403 or fails, use browser tools:
-1. Navigate to the profile URL in a tab
-2. Use `get_page_text` to extract the full profile content
-3. Parse out all profile details
+Additionally, if the job posting involves collaboration or working under a creative director, proactively ask about agency background:
+- header: "Agency Work"
+- question: "This role involves working under a creative director/team. Do you have relevant agency or collaborative experience to highlight?"
+- options:
+  - "Yes, I'll describe it" (description: "I have agency experience working under creative directors or in team environments")
+  - "No, skip this" (description: "Focus on independent work and skills")
 
 ---
 
@@ -201,7 +210,20 @@ Write a compelling, personalized cover letter following these rules:
 
 ---
 
-## Step 8: Review with User
+## Step 8: Answer Client Questions
+
+If the job posting includes specific questions for applicants to answer (e.g., "Please describe your experience with X" or "Provide links to past work"), draft responses for each question.
+
+- Write responses in the same tone as the cover letter
+- Keep answers focused and specific to what was asked
+- If a question requires information you don't have (e.g., links to active sites), use `AskUserQuestion` to gather it from the user before drafting the response
+- Present all question responses alongside the cover letter in Step 9
+
+If there are no client questions in the posting, skip this step.
+
+---
+
+## Step 9: Review with User
 
 Present the cover letter in a clean, copy-paste ready format:
 
@@ -228,6 +250,15 @@ Present the cover letter in a clean, copy-paste ready format:
      - "I have specific edits" (description: "I'll tell you what to change")
 
 If the user wants changes, revise and present again. Repeat until they're satisfied.
+
+5. After the user approves the final cover letter, use `AskUserQuestion` to offer saving:
+   - header: "Save"
+   - question: "Want to save this cover letter to knowledge/drafts/ as a markdown file?"
+   - options:
+     - "Yes, save it" (description: "Save cover letter, client question responses, skills matched, talking points, and bid range to a markdown file")
+     - "No thanks" (description: "Skip saving, I'll copy it directly")
+
+If saving, write to `knowledge/drafts/upwork-cover-letter-[short-job-title].md` with all metadata.
 
 ---
 
