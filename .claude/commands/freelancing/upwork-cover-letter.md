@@ -36,6 +36,26 @@ If the user provides a URL (via `$ARGUMENTS` or their answer), proceed. If they 
 
 If the user wants to highlight something specific, use a follow-up `AskUserQuestion` to ask what they want to emphasize.
 
+**Question 4** - Ask about frameworks/methodologies:
+- header: "Frameworks"
+- question: "Do you use any specific design or marketing frameworks you want referenced in this cover letter?"
+- options:
+  - "StoryBrand (Donald Miller)" (description: "Position the client as the hero with a guide, plan, and transformation arc")
+  - "Other framework" (description: "I use a different methodology I'd like to mention")
+  - "No specific framework" (description: "Skip this and focus on skills and experience")
+
+If the user selects StoryBrand or another framework, weave it into the cover letter as a differentiator.
+
+**Question 5** - Ask about portfolio attachments:
+- header: "Attachments"
+- question: "Are you attaching portfolio samples to this proposal?"
+- options:
+  - "Yes, and I want to call them out" (description: "I'll tell you what's notable about the attached samples so the cover letter can reference them")
+  - "Yes, but no special mention needed" (description: "Attachments speak for themselves")
+  - "No attachments" (description: "Cover letter only")
+
+If the user wants to call out attachments, use a follow-up `AskUserQuestion` to ask what's notable about them.
+
 ---
 
 ## Step 2: Gather Project Details
@@ -45,7 +65,14 @@ Fetch the Upwork project posting using the URL from Step 1.
 **Primary method**: Use `WebFetch` on the project URL with the prompt:
 "Extract ALL project details: job title, description, required skills, budget/hourly rate, project length, experience level required, client history (jobs posted, hire rate, total spent), client location, number of proposals, and any specific questions the client asks applicants to answer."
 
-**Fallback**: If WebFetch returns a 403 or fails, use the `mcp__claude-in-chrome__` browser tools:
+**Fallback 1**: If WebFetch returns a 403 or fails, use `AskUserQuestion` to offer the user to paste the job description directly:
+- header: "Job Details"
+- question: "I couldn't access the Upwork posting directly. How would you like to provide the job details?"
+- options:
+  - "I'll paste the description" (description: "Copy and paste the job posting text here")
+  - "Try browser automation" (description: "Use Chrome to read the page — requires the tab to be open and logged in")
+
+**Fallback 2**: If the user chooses browser automation, use the `mcp__claude-in-chrome__` browser tools:
 1. Call `tabs_context_mcp` to get available tabs
 2. Create a new tab with `tabs_create_mcp`
 3. Navigate to the project URL
@@ -110,6 +137,7 @@ Before writing, perform this analysis silently:
    - Upwork profile (job history, success score, client feedback)
    - Website resume (work experience, certifications)
    - Portfolio items or relevant projects
+   - **IMPORTANT**: Use the user's specific platform/tool years (e.g., "20 years of WordPress", "9 years of Elementor") rather than generalizing to "web development." Always reference the exact technology and duration the user claims.
 4. **Spot differentiators** - What makes Clifton uniquely qualified vs. generic applicants?
 5. **Note client questions** - If the posting asks specific questions, prepare answers
 6. **Identify client type** - Small business, startup, agency, enterprise? Adjust tone accordingly
@@ -150,7 +178,7 @@ Write a compelling, personalized cover letter following these rules:
 - If they asked questions in the posting, weave answers in naturally
 
 **Call to Action (1-2 sentences)**
-- Suggest a next step (quick call, portfolio review, small test task)
+- Express interest in discussing things further without specifying a medium (do NOT suggest jumping on a call)
 - Express genuine interest without being desperate
 - Keep it confident and professional
 
@@ -169,6 +197,7 @@ Write a compelling, personalized cover letter following these rules:
 - Buzzwords and jargon the client didn't use
 - Mentioning that AI helped write this
 - Going over 5,000 characters
+- Em-dashes — use periods, commas, or natural sentence breaks instead
 
 ---
 
