@@ -194,6 +194,9 @@ Write a compelling, personalized cover letter following these rules:
 - Express genuine interest without being desperate
 - Keep it confident and professional
 
+**Portfolio Links (Always Include)**
+After the closing line of every cover letter, always append the user's standard portfolio links block. These are stored in the project memory file (`MEMORY.md`) and must be included in every cover letter without asking. Do not skip this section.
+
 ### Tone & Voice
 - Apply the tone preference the user selected in Step 1
 - Direct and specific - no filler phrases
@@ -221,6 +224,7 @@ If the job posting includes specific questions for applicants to answer (e.g., "
 - Keep answers focused and specific to what was asked
 - If a question requires information you don't have (e.g., links to active sites), use `AskUserQuestion` to gather it from the user before drafting the response
 - Present all question responses alongside the cover letter in Step 9
+- **If the cover letter body contains disclaimers or honest gaps** (e.g., "I haven't done X specifically"), move those to the Client Questions section instead. The cover letter body should focus on strengths. Honest positioning about experience gaps belongs in client question responses, not the pitch itself.
 
 If there are no client questions in the posting, skip this step.
 
