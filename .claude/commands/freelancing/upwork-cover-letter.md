@@ -129,6 +129,8 @@ After reviewing the project details, if ANYTHING is ambiguous, confusing, or cou
 - The client asks questions in the posting that need your input to answer well
 - There are technologies or tools mentioned you want to confirm your experience with
 - The project could be approached multiple ways and you want to confirm the right angle
+- **Multiple approaches exist**: If the project can be done in fundamentally different ways (e.g., traditional build vs. headless architecture, page builder vs. custom code, rebuild vs. adapt), use `AskUserQuestion` to present the options with trade-offs so the user can decide which approach to propose
+- **Existing assets**: Ask if the user has any existing tools, starter templates, or pre-built solutions relevant to this project that could be mentioned as a competitive advantage
 
 **Format**: Use `AskUserQuestion` with specific, targeted questions based on what you found in the posting. Make the options reflect the actual ambiguity - not generic choices. Ask as many rounds of questions as needed until everything is clear.
 
@@ -185,6 +187,7 @@ Write a compelling, personalized cover letter following these rules:
 - Demonstrate you understand the project scope and challenges
 - Mention your approach or how you'd tackle their specific requirements
 - If they asked questions in the posting, weave answers in naturally
+- **NEVER agree to the client's stated timeline or budget constraints** in the cover letter without asking the user first. If the client specifies a time or budget target (e.g., "1 hour per page"), use `AskUserQuestion` to ask the user for their honest estimate before writing.
 
 **Call to Action (1-2 sentences)**
 - Express interest in discussing things further without specifying a medium (do NOT suggest jumping on a call)
@@ -258,7 +261,11 @@ If the user wants changes, revise and present again. Repeat until they're satisf
      - "Yes, save it" (description: "Save cover letter, client question responses, skills matched, talking points, and bid range to a markdown file")
      - "No thanks" (description: "Skip saving, I'll copy it directly")
 
-If saving, write to `knowledge/drafts/upwork-cover-letter-[short-job-title].md` with all metadata.
+If saving, write to `knowledge/drafts/upwork-cover-letter-[short-job-title].md` with all metadata. Then automatically open the file in Bear using:
+```
+open "bear://x-callback-url/create?title=[URL-encoded title]&text=[URL-encoded file content]"
+```
+Do not ask before opening Bear. This is the default behavior.
 
 ---
 
