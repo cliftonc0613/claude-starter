@@ -59,12 +59,13 @@ This is a **starter template** repository containing pre-configured Claude Code 
 
 ```
 .claude/
-├── agents/          # Specialized AI agents for content, research, and design tasks
-├── commands/        # Custom slash commands for common workflows
-└── subagents/       # Supporting agents for specific sub-tasks
+├── agents/                    # Main agents (8 built-in agents)
+├── agents/my-team/            # 177+ specialized domain experts (14 categories)
+├── commands/                  # Custom slash commands for common workflows
+└── subagents/                 # Supporting agents for specific sub-tasks
 
-context/             # Design principles and review guidelines
-├── design-principles.md              # S-tier SaaS dashboard design checklist
+context/                       # Design principles and review guidelines
+├── design-principles.md       # S-tier SaaS dashboard design checklist
 ├── design-review-claude-md-snippet.md  # Quick visual check protocol
 └── design-review-slash-command.md     # Comprehensive design review agent template
 ```
@@ -121,6 +122,194 @@ Run these with the `/` prefix (e.g., `/blog-research`)
 - `/agent-creator` - Create new Claude Code agent configurations
 - `/prompt-creator` - Generate optimized prompts
 
+## Available Specialized Agents
+
+Located in `.claude/agents/my-team/`, this repository contains 177+ specialized AI agents organized into 14 categories. These agents are designed for deep expertise in specific domains and can be invoked when the task requires specialized knowledge.
+
+### How to Use These Agents
+
+To invoke a specialized agent, you can use the Skill tool (recommended) or invoke it directly. Most agents follow a consistent format:
+- **Frontmatter**: name, description, color, emoji, vibe
+- **Main body**: Detailed persona, capabilities, workflows, and deliverables
+
+### Agent Categories
+
+#### Design (8 agents)
+Expert visual and user experience design agents specializing in:
+- UI Design (pixel-perfect interfaces, component libraries)
+- UX Research (user research, usability testing)
+- Brand Design (brand guardianship, visual systems)
+- Creative Design (visual storytelling, whimsy injection)
+- AI-Assisted Design (image prompt engineering)
+
+#### Engineering (13 agents)
+Full-stack and specialized engineering agents including:
+- Frontend Development (React, Vue, Angular, performance)
+- Backend Architecture (API design, databases, microservices)
+- DevOps & Security (CI/CD, security, infrastructure)
+- Mobile Development (iOS, Android, cross-platform)
+- Specialized Engineering (WebXR, embedded systems, blockchain)
+
+#### Game Development (20 agents)
+Comprehensive game development support across platforms:
+- **Unity** (5 agents): Architecture, tools, multiplayer, shaders
+- **Unreal Engine** (4 agents): Multiplayer, systems, technical art, world building
+- **Godot** (3 agents): Gameplay scripting, multiplayer, shaders
+- **Roblox Studio** (3 agents): Avatar creation, experience design, systems scripting
+- **General** (5 agents): Design, audio, narrative, level design
+
+#### Marketing (17 agents)
+Strategic marketing and content creation specialists:
+- **General Marketing** (3): Content creation, growth hacking, SEO
+- **China Platforms** (5): Baidu SEO, Bilibili, China e-commerce
+- **Social Media** (5): Instagram, TikTok, Twitter, Reddit, WeChat
+- **Specialized** (4): App Store optimization, carousel growth, Xiaohongshu, Zhihu
+
+#### Paid Media (8 agents)
+Paid media strategy and execution across platforms:
+- PPC Campaign Strategist, Paid Social Strategist, Search Query Analyst
+- Programmatic Buyer, Creative Strategist, Auditor, Tracker Specialist
+
+#### Product (4 agents)
+Product management and feedback synthesis:
+- Feedback Synthesizer, Behavioral Nudge Engine
+- Sprint Prioritizer, Trend Researcher
+
+#### Project Management (7 agents)
+Project lifecycle management and execution:
+- Senior Project Manager, Project Shepherd, Studio Operations
+- Studio Producer, Jira Workflow Steward, Experiment Tracker, PM Producer
+
+#### Sales (6 agents)
+Pre-sales and sales enablement specialists:
+- Sales Engineer, Account Strategist, Deal Strategist
+- Proposal Strategist, Discovery Coach, Coach
+
+#### Spatial Computing (6 agents)
+XR and immersive technology development:
+- XR Immersive Developer, XR Cockpit Interaction Specialist
+- VisionOS Spatial Engineer, macOS Spatial/Metal Engineer
+- Terminal Integration Specialist, XR Interface Architect
+
+#### Specialized (15 agents)
+Domain-specific expert agents:
+- Agents Orchestrator, Agentic Identity & Trust Architect
+- Compliance Auditor, Blockchain Security Auditor, ZK Steward
+- Data Consolidation Agent, Report Distribution Agent, Sales Data Extraction Agent
+- Accounts Payable Agent, Developer Advocate, Model QA Specialist
+- Cultural Intelligence Strategist, LSP Index Engineer, Identity Graph Operator
+
+#### Testing (8 agents)
+Quality assurance and testing specialists:
+- API Tester, Accessibility Auditor, Test Results Analyzer
+- Performance Benchmarker, Evidence Collector, Tool Evaluator
+- Reality Checker, Workflow Optimizer
+
+#### Strategy (17 agents)
+Strategic planning and execution frameworks:
+- **Coordination** (2): Agent activation prompts, handoff templates
+- **Playbooks** (6): Phase 0-6 discovery, strategy, foundation, build, hardening, launch, operate
+- **Runbooks** (4): Enterprise feature, incident response, marketing campaign, startup MVP
+- **Strategic Docs**: Executive brief, nexus strategy, quickstart
+
+#### Integrations (13 agents)
+Platform and tool integrations:
+- **MCP**: memory, backend architect with memory
+- **AI Code Editors**: Aider, Antigravity, Claude Code, Cursor, Gemini CLI
+- **Platform**: GitHub Copilot, Opencode, Windsurf
+- Plus integration directories and READMEs
+
+### Notable Agents to Know
+
+**Design:**
+- `design-ui-designer.md` - Creates visual design systems, component libraries
+- `design-ux-architect.md` - Designs user experiences and interaction flows
+- `design-brand-guardian.md` - Maintains visual brand consistency
+
+**Engineering:**
+- `engineering-frontend-developer.md` - React/Vue/Angular development, performance
+- `engineering-senior-developer.md` - Senior-level full-stack development
+- `engineering-ai-engineer.md` - AI/ML integration and development
+
+**Game Development:**
+- `unity-architect.md` - Unity game architecture and development
+- `unreal-multiplayer-architect.md` - Unreal Engine multiplayer systems
+- `game-designer.md` - Game design and mechanics
+
+**Marketing:**
+- `marketing-social-media-strategist.md` - Cross-platform social strategy
+- `marketing-seo-specialist.md` - SEO and content optimization
+- `marketing-content-creator.md` - Content creation and curation
+
+**Paid Media:**
+- `paid-media-ppc-strategist.md` - PPC campaign strategy
+- `paid-media-paid-social-strategist.md` - Social advertising strategy
+
+**Product:**
+- `product-feedback-synthesizer.md` - Collects and analyzes user feedback
+
+**Project Management:**
+- `project-management-senior.md` - Converts specs to tasks
+- `project-management-project-shepherd.md` - Project lifecycle management
+
+**Sales:**
+- `sales-engineer.md` - Pre-sales technical specialist
+- `sales-deal-strategist.md` - Sales deal strategy and negotiation
+
+**Spatial Computing:**
+- `spatial-computing/xr-immersive-developer.md` - WebXR and AR/VR development
+- `spatial-computing/visionos-spatial-engineer.md` - VisionOS spatial computing
+
+**Specialized:**
+- `specialized-developer-advocate.md` - Developer community and documentation
+- `specialized-blockchain-security-auditor.md` - Blockchain security auditing
+- `specialized-compliance-auditor.md` - Compliance and audit support
+
+**Testing:**
+- `testing-api-tester.md` - API testing and quality assurance
+- `testing-accessibility-auditor.md` - Accessibility compliance testing
+- `testing-performance-benchmarker.md` - Performance testing and optimization
+
+### Agent Invocation Best Practices
+
+1. **Use the Skill tool for invoke**: `Skill: name: design-ui-designer` or `Skill: name: engineering-frontend-developer`
+2. **Search by category**: For broad task types, specify the category: `Skill: name: design`
+3. **Combine with context**: Provide specific project context when invoking agents
+4. **Chain agents**: Multiple agents can work together by handoff or sequential invocation
+5. **Review agent files**: Each agent includes detailed personality, capabilities, and deliverables in its markdown file
+
+### Example Usage
+
+**For UI/UX Design:**
+```
+Skill: design-ui-designer
+Context: Building a SaaS dashboard component library
+```
+
+**For Frontend Development:**
+```
+Skill: engineering-frontend-developer
+Context: Implementing a React table component with virtualization
+```
+
+**For API Testing:**
+```
+Skill: testing-api-tester
+Context: Validating a REST API with security testing
+```
+
+**For Game Development:**
+```
+Skill: game-development/unity-architect
+Context: Designing a multiplayer game architecture for Unity
+```
+
+**For Sales Engineering:**
+```
+Skill: sales-engineer
+Context: Technical discovery and POC design for enterprise deal
+```
+
 ## Design Review Workflow
 
 This repository includes a comprehensive design review system based on Stripe, Airbnb, and Linear standards:
@@ -161,7 +350,12 @@ To use this starter for a new project:
 
 ## Creating New Agents
 
-Use `/agent-creator` or `/meta-agent` to generate new agent configurations. New agents should be created in `.claude/agents/` following the existing template structure.
+Use `/agent-creator` or `/meta-agent` to generate new agent configurations.
+
+- **Main agents** (`.claude/agents/`): Built-in general-purpose agents
+- **My-team agents** (`.claude/agents/my-team/`): 177+ specialized domain experts organized into 14 categories
+
+New agents should be created in the appropriate directory following the existing template structure.
 
 ## Notes
 
@@ -247,6 +441,8 @@ Claude has specialized modes that activate different thinking styles and approac
 1. Read `/context/core/claude-modes.json` to get the full mode configuration
 2. Apply all behavior settings, focus areas, and voice guidelines from that mode
 3. Stay in that mode until told otherwise or a different mode is called
+
+**Note**: In addition to these built-in modes, the repository contains 177+ specialized agents in `.claude/agents/my-team/` organized into 14 categories. These agents provide domain-specific expertise beyond the built-in modes.
 
 ### Available Modes
 
