@@ -1,0 +1,3 @@
+[submodule ".claude/agents/my-team"]
+	path = .claude/agents/my-team
+	url = https://github.com/msitarzewski/agency-agents.git
