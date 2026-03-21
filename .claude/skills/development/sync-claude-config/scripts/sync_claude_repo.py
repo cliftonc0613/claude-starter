@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Sync .claude configuration from central repository to current project.
-Handles cloning, selective pulling, and backup management.
+Handles cloning, selective pulling, submodule management, and backup management.
 """
 
 import os
@@ -29,6 +29,16 @@ class ClaudeSyncer:
                 return json.load(f)
         return {}
 
+    def _run_git(self, args: List[str], cwd: str = None) -> subprocess.CompletedProcess:
+        """Run a git command and return the result"""
+        return subprocess.run(
+            ["git"] + args,
+            cwd=cwd or str(self.project_root),
+            check=True,
+            capture_output=True,
+            text=True
+        )
+
     def clone_central_repo(self) -> Path:
         """Clone the central repository to a temporary directory"""
         self.temp_dir = tempfile.mkdtemp(prefix="claude_sync_")
@@ -36,16 +46,142 @@ class ClaudeSyncer:
 
         try:
             subprocess.run(
-                ["git", "clone", "--depth", "1", self.central_repo_url, self.temp_dir],
+                ["git", "clone", "--depth", "1", "--recurse-submodules", self.central_repo_url, self.temp_dir],
                 check=True,
                 capture_output=True,
                 text=True
             )
-            print("✓ Repository cloned successfully")
+            print("✓ Repository cloned successfully (with submodules)")
             return Path(self.temp_dir)
         except subprocess.CalledProcessError as e:
             print(f"✗ Failed to clone repository: {e.stderr}")
             raise
+
+    # ── Submodule Management ──
+
+    def get_submodules(self) -> List[Dict[str, str]]:
+        """Get list of submodules defined in .gitmodules"""
+        gitmodules_path = self.project_root / ".gitmodules"
+        if not gitmodules_path.exists():
+            return []
+
+        submodules = []
+        current = {}
+        with open(gitmodules_path, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith('[submodule'):
+                    if current:
+                        submodules.append(current)
+                    name = line.split('"')[1]
+                    current = {"name": name}
+                elif '=' in line:
+                    key, value = [s.strip() for s in line.split('=', 1)]
+                    current[key] = value
+        if current:
+            submodules.append(current)
+
+        return submodules
+
+    def init_submodules(self) -> bool:
+        """Initialize and clone all submodules that haven't been initialized yet"""
+        submodules = self.get_submodules()
+        if not submodules:
+            print("No submodules found in .gitmodules")
+            return True
+
+        print(f"\nFound {len(submodules)} submodule(s):")
+        for sm in submodules:
+            print(f"  • {sm['name']} → {sm.get('url', 'unknown')}")
+
+        print("\nInitializing submodules...")
+        try:
+            self._run_git(["submodule", "update", "--init", "--recursive"])
+            print("✓ All submodules initialized")
+            return True
+        except subprocess.CalledProcessError as e:
+            print(f"✗ Failed to initialize submodules: {e.stderr}")
+            return False
+
+    def update_submodules(self, specific: str = None) -> bool:
+        """Pull latest changes for submodules"""
+        submodules = self.get_submodules()
+        if not submodules:
+            print("No submodules found in .gitmodules")
+            return True
+
+        if specific:
+            submodules = [sm for sm in submodules if specific in sm["name"] or specific in sm.get("path", "")]
+            if not submodules:
+                print(f"✗ No submodule matching '{specific}' found")
+                return False
+
+        updated = 0
+        for sm in submodules:
+            path = sm.get("path", sm["name"])
+            full_path = self.project_root / path
+            print(f"\nUpdating submodule: {sm['name']}...")
+
+            if not full_path.exists() or not (full_path / ".git").exists():
+                print(f"  Submodule not initialized, initializing first...")
+                try:
+                    self._run_git(["submodule", "update", "--init", "--recursive", "--", path])
+                except subprocess.CalledProcessError as e:
+                    print(f"  ✗ Failed to initialize: {e.stderr}")
+                    continue
+
+            try:
+                # Fetch and pull latest from remote
+                self._run_git(["fetch", "origin"], cwd=str(full_path))
+                result = self._run_git(["pull", "origin", "main"], cwd=str(full_path))
+                if "Already up to date" in result.stdout:
+                    print(f"  ✓ Already up to date")
+                else:
+                    print(f"  ✓ Updated to latest")
+                updated += 1
+            except subprocess.CalledProcessError:
+                # Try 'master' branch if 'main' fails
+                try:
+                    self._run_git(["pull", "origin", "master"], cwd=str(full_path))
+                    print(f"  ✓ Updated to latest (master branch)")
+                    updated += 1
+                except subprocess.CalledProcessError as e:
+                    print(f"  ✗ Failed to update: {e.stderr}")
+
+        print(f"\n✓ Updated {updated}/{len(submodules)} submodule(s)")
+        return updated > 0
+
+    def submodule_status(self) -> None:
+        """Show current status of all submodules"""
+        submodules = self.get_submodules()
+        if not submodules:
+            print("No submodules configured.")
+            return
+
+        print(f"\nSubmodule Status ({len(submodules)} configured):")
+        print("-" * 60)
+
+        for sm in submodules:
+            path = sm.get("path", sm["name"])
+            full_path = self.project_root / path
+            name = sm["name"]
+            url = sm.get("url", "unknown")
+
+            if not full_path.exists():
+                status = "NOT INITIALIZED"
+            elif not (full_path / ".git").exists() and not any(full_path.iterdir()):
+                status = "EMPTY (needs init)"
+            else:
+                try:
+                    result = self._run_git(["log", "-1", "--format=%h %s", "HEAD"], cwd=str(full_path))
+                    status = f"OK → {result.stdout.strip()}"
+                except subprocess.CalledProcessError:
+                    status = "ERROR reading status"
+
+            print(f"  [{status}]")
+            print(f"    Path: {path}")
+            print(f"    URL:  {url}")
+            print()
 
     def _create_backup(self, target_path: Path) -> Path:
         """Create a backup of existing .claude directory"""
@@ -150,21 +286,68 @@ class ClaudeSyncer:
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: sync_claude_repo.py <central_repo_url> [project_root]")
+        print("Usage: sync_claude_repo.py <command> [options]")
+        print("")
+        print("Commands:")
+        print("  sync <repo_url> [project_root]  - Sync configs from central repo")
+        print("  submodules init [project_root]   - Initialize all submodules")
+        print("  submodules update [project_root] [name] - Update submodules (optionally filter by name)")
+        print("  submodules status [project_root] - Show submodule status")
         sys.exit(1)
 
-    central_repo = sys.argv[1]
-    project_root = sys.argv[2] if len(sys.argv) > 2 else os.getcwd()
+    command = sys.argv[1]
 
-    try:
-        syncer = ClaudeSyncer(central_repo, project_root)
-        syncer.clone_central_repo()
-        syncer.sync_all()
-        syncer.cleanup()
-        print("\n✓ Sync completed successfully")
-    except Exception as e:
-        print(f"\n✗ Sync failed: {str(e)}", file=sys.stderr)
-        sys.exit(1)
+    if command == "submodules":
+        action = sys.argv[2] if len(sys.argv) > 2 else "status"
+        project_root = sys.argv[3] if len(sys.argv) > 3 else os.getcwd()
+        syncer = ClaudeSyncer("", project_root)
+
+        if action == "init":
+            success = syncer.init_submodules()
+        elif action == "update":
+            specific = sys.argv[4] if len(sys.argv) > 4 else None
+            success = syncer.update_submodules(specific)
+        elif action == "status":
+            syncer.submodule_status()
+            success = True
+        else:
+            print(f"Unknown submodule action: {action}")
+            sys.exit(1)
+
+        sys.exit(0 if success else 1)
+
+    elif command == "sync":
+        if len(sys.argv) < 3:
+            print("Usage: sync_claude_repo.py sync <central_repo_url> [project_root]")
+            sys.exit(1)
+
+        central_repo = sys.argv[2]
+        project_root = sys.argv[3] if len(sys.argv) > 3 else os.getcwd()
+
+        try:
+            syncer = ClaudeSyncer(central_repo, project_root)
+            syncer.clone_central_repo()
+            syncer.sync_all()
+            syncer.cleanup()
+            print("\n✓ Sync completed successfully")
+        except Exception as e:
+            print(f"\n✗ Sync failed: {str(e)}", file=sys.stderr)
+            sys.exit(1)
+
+    else:
+        # Backwards compatible: treat first arg as repo URL
+        central_repo = sys.argv[1]
+        project_root = sys.argv[2] if len(sys.argv) > 2 else os.getcwd()
+
+        try:
+            syncer = ClaudeSyncer(central_repo, project_root)
+            syncer.clone_central_repo()
+            syncer.sync_all()
+            syncer.cleanup()
+            print("\n✓ Sync completed successfully")
+        except Exception as e:
+            print(f"\n✗ Sync failed: {str(e)}", file=sys.stderr)
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()

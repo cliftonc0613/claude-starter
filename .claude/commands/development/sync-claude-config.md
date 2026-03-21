@@ -13,6 +13,7 @@ Synchronizes `.claude` configurations from a central repository to your current 
 
 This command lets you:
 - Pull the latest agents, commands, and skills from your central repository
+- Initialize and update git submodules (e.g., my-team agents)
 - Choose what to sync (everything, by category, or specific items)
 - Automatically create backups before overwriting
 - Keep your projects synchronized with your standard toolset
@@ -61,6 +62,12 @@ The skill can sync:
 - Choose individual agents or commands
 - Most precise control
 
+**Mode 4: Submodules**
+- Initialize submodules that haven't been cloned yet
+- Update existing submodules to latest from their remote
+- Check status of all configured submodules
+- Useful for pulling latest my-team agents without re-syncing everything
+
 ## Configuration
 
 Your project uses `.claude/config.json` to:
@@ -81,30 +88,54 @@ Edit it to change the central repo source or customize what's available.
 After running `/sync-claude-config`:
 
 ```
+1. What would you like to do?
+   [A] Sync everything from central repo
+   [B] Sync by category (agents/commands/skills)
+   [C] Sync specific items only
+   [D] Manage submodules (init/update/status)
+
+>> A  (syncs configs)
+>> D  (manages submodules)
+```
+
+**Sync Example:**
+```
 1. Cloning central repository...
-✓ Repository cloned successfully
+✓ Repository cloned successfully (with submodules)
 
-2. What would you like to sync?
-   [A] Everything
-   [B] By category (choose agents/commands/skills)
-   [C] Specific items only
-
->> B
-
-3. Which categories?
+2. Which categories?
    [✓] Agents
    [ ] Commands
    [ ] Skills
 
-4. Creating backup at .claude.backup.20251214_143022...
+3. Creating backup at .claude.backup.20251214_143022...
 ✓ Backup created
 
-5. Syncing agents...
+4. Syncing agents...
   ✓ Synced research/search-specialist
   ✓ Synced design-development/premium-ui-designer
-  ... (more items)
 
 ✓ Sync completed successfully
+```
+
+**Submodule Example:**
+```
+1. What would you like to do with submodules?
+   [A] Initialize (first-time setup after clone)
+   [B] Update (pull latest from remotes)
+   [C] Status (check current state)
+
+>> B
+
+Found 1 submodule(s):
+  • .claude/agents/my-team → https://github.com/msitarzewski/agency-agents.git
+
+Updating submodule: .claude/agents/my-team...
+  ✓ Updated to latest
+
+Don't forget to commit the updated reference:
+  git add .claude/agents/my-team
+  git commit -m "chore: update my-team agents submodule to latest"
 ```
 
 ## Troubleshooting

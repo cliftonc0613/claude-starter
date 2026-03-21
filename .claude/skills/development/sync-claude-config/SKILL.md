@@ -45,6 +45,12 @@ Use this skill when:
 - Only pulls what you need
 - Useful for picking specific improvements
 
+**Mode 4: Submodules**
+- Initialize submodules that haven't been cloned yet
+- Update existing submodules to pull latest changes from their remotes
+- Check status of all configured submodules
+- Target a specific submodule by name for selective updates
+
 ### Configuration File (.claude/config.json)
 
 The skill reads from `.claude/config.json` which defines:
@@ -114,7 +120,32 @@ python scripts/sync_claude_repo.py <repo_url> <project_root>
 - User checks boxes for what to sync
 - Script syncs only selections
 
-### 4. Verify Results
+### 4. Submodule Operations (Mode 4)
+
+When the user chooses submodule mode, offer three actions:
+
+**Initialize**: For fresh clones where submodules haven't been pulled yet
+```bash
+python scripts/sync_claude_repo.py submodules init <project_root>
+```
+
+**Update**: Pull latest changes for all (or a specific) submodule
+```bash
+python scripts/sync_claude_repo.py submodules update <project_root> [submodule_name]
+```
+
+**Status**: Show current state of all submodules
+```bash
+python scripts/sync_claude_repo.py submodules status <project_root>
+```
+
+After updating submodules, remind the user to commit the updated submodule reference:
+```bash
+git add .claude/agents/my-team
+git commit -m "chore: update my-team agents submodule to latest"
+```
+
+### 5. Verify Results
 
 After sync completes:
 - Confirm files were copied successfully
