@@ -115,6 +115,9 @@ Run these with the `/` prefix (e.g., `/blog-research`)
 - `/weekly-checkin` - Intelligent weekly progress tracking with adaptive metrics
 - `/time-checkin` - Time-aware check-ins (morning/midday/evening)
 
+**Development:**
+- `/ascii-wireframe [description]` - Generate detailed ASCII/Unicode wireframes in the terminal for any UI
+
 **Freelancing:**
 - `/upwork-cover-letter [project-url]` - Generate tailored Upwork cover letters from project URLs
 
