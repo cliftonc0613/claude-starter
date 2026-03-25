@@ -1,0 +1,65 @@
+{
+  "_description": "Before and after pairs demonstrating successful rewrites. The learning engine adds new pairs from user-edited suggestions.",
+  "examples": [
+    {
+      "category": "word_replacement",
+      "before": "Let's delve into the comprehensive suite of features this robust platform offers.",
+      "after": "Here's what the platform actually does.",
+      "strategy": "Downshift vocabulary + compress filler"
+    },
+    {
+      "category": "phrase_compression",
+      "before": "It's worth noting that in today's rapidly evolving digital landscape, businesses need to leverage innovative solutions.",
+      "after": "Businesses need better tools.",
+      "strategy": "Delete filler phrases, compress to core meaning"
+    },
+    {
+      "category": "structure_breaking",
+      "before": "The system provides real-time analytics. Users can monitor their performance. The dashboard displays key metrics. Teams can share insights easily.",
+      "after": "Real-time analytics. Every metric you care about, updated live. Your whole team sees the same numbers — no more screenshots in Slack.",
+      "strategy": "Vary sentence length, add conversational aside, use fragment"
+    },
+    {
+      "category": "burstiness_injection",
+      "before": "The authentication system is secure and reliable. It uses industry-standard protocols. The implementation follows best practices. Users can trust their data is protected.",
+      "after": "Authentication runs on OAuth 2.0 with PKCE. Rock solid. We haven't had a single auth-related incident in 18 months, and that includes handling 2M+ daily logins.",
+      "strategy": "Specificity spike + fragment + register shift"
+    },
+    {
+      "category": "voice_injection",
+      "before": "We have extensive experience in WordPress development, having worked on numerous projects across various industries.",
+      "after": "I've had my hands on over 200 WordPress sites — everything from local landscapers to mortgage companies. Most of that was at Drum Creative between 2015 and 2020.",
+      "strategy": "Replace generic claims with specific personal details"
+    },
+    {
+      "category": "de_formatting",
+      "before": "**Key Features:**\n- **Speed**: Lightning-fast performance\n- **Reliability**: 99.9% uptime\n- **Scale**: Handles millions of requests",
+      "after": "It's fast (sub-200ms responses), stays up (99.9% over the last year), and handles traffic spikes without breaking a sweat.",
+      "strategy": "Convert bold list to prose, add specifics"
+    },
+    {
+      "category": "hedging_removal",
+      "before": "While there are certainly some potential challenges that could possibly arise, it's important to consider that the overall trajectory appears to be generally positive.",
+      "after": "There will be challenges. But the trajectory is positive.",
+      "strategy": "Strip hedging chain, commit to position, use fragment"
+    },
+    {
+      "category": "conclusion_fix",
+      "before": "In conclusion, it is clear that this innovative solution represents a paradigm shift in how businesses approach digital transformation. The future looks bright for organizations that embrace these cutting-edge technologies.",
+      "after": "This changes how the work gets done. Companies using it now have a real edge.",
+      "strategy": "Delete formulaic conclusion opener, compress inflated language, be direct"
+    },
+    {
+      "category": "passive_to_active",
+      "before": "It was determined that user satisfaction could be improved through interface redesign. Tests were conducted and improvements were subsequently implemented.",
+      "after": "We looked at the data and realized people hated the interface. So we redesigned it. User satisfaction went up.",
+      "strategy": "Name the actor, use active voice, simplify"
+    },
+    {
+      "category": "register_shift",
+      "before": "The API adheres to RESTful architectural conventions, utilizing proper HTTP status codes and implementing comprehensive error handling mechanisms.",
+      "after": "The API follows REST conventions with proper status codes. Basically, it does what you'd expect. No weird gotchas.",
+      "strategy": "Mix formal and informal register in same paragraph"
+    }
+  ]
+}

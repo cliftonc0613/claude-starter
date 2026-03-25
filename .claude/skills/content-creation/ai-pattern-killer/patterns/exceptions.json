@@ -1,0 +1,7 @@
+{
+  "_description": "Patterns the user has explicitly approved. The learning engine adds entries here after 3 rejections of the same flag.",
+  "approved_words": [],
+  "approved_phrases": [],
+  "approved_structures": [],
+  "notes": {}
+}

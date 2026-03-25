@@ -1,0 +1,46 @@
+# AI Pattern Killer - Configuration
+# Sensitivity and behavior settings for all modes
+
+sensitivity:
+  level: balanced  # Options: relaxed, balanced, paranoid
+  # relaxed: Only flags high_confidence patterns
+  # balanced: Flags high + medium confidence (default)
+  # paranoid: Flags everything including context_dependent
+
+modes:
+  post_process:
+    enabled: true
+    auto_rewrite: false          # If true, applies rewrites without asking
+    show_confidence: true        # Show confidence level per flag
+    group_by_category: true      # Group findings by type (word/phrase/structure)
+
+  real_time:
+    enabled: false               # Toggle on to inject rules during generation
+    inject_into_skills:          # Skills that auto-apply real-time mode
+      - upwork-cover-letter
+      - blog-research
+      - newsletter-research
+      - press-release
+      - content-creator
+
+  audit:
+    enabled: true
+    score_threshold: 30          # Score above this triggers warnings (0-100)
+    show_details: true           # Show individual pattern matches in report
+
+  voice_training:
+    enabled: true
+    min_samples: 3               # Minimum writing samples for voice profile
+    max_samples: 10              # Maximum samples to analyze
+
+learning:
+  auto_update: true              # Allow learning engine to update databases
+  rejection_threshold: 3         # Rejections before auto-adding to exceptions
+  confirmation_threshold: 5      # Confirms before elevating pattern confidence
+  require_changelog: true        # Log all automated changes
+
+output:
+  format: inline                 # Options: inline, report, score-only
+  # inline: Shows flags within the text
+  # report: Separate report after the text
+  # score-only: Just the detectability score

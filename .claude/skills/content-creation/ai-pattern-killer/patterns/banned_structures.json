@@ -1,0 +1,95 @@
+{
+  "_description": "Structural patterns that make text detectable as AI-generated. Each pattern includes a description, bad example, and fix.",
+  "patterns": [
+    {
+      "name": "triple_adjective_opener",
+      "description": "Three adjectives stacked before a noun or in a list. AI defaults to groups of three.",
+      "example_bad": "A comprehensive, innovative, and scalable solution",
+      "fix": "Pick one specific adjective or replace with a concrete detail. 'A solution that handles 10K concurrent users' beats three vague adjectives."
+    },
+    {
+      "name": "mirror_paragraphs",
+      "description": "Every paragraph follows the same intro-points-summary structure with similar length.",
+      "example_bad": "X is important. It has A, B, and C. Therefore X matters. [repeat exact shape]",
+      "fix": "Vary paragraph shapes. Some should be one sentence. Some six. Start one with a question. Let the content dictate the shape."
+    },
+    {
+      "name": "hedging_chains",
+      "description": "Multiple qualifiers stacked in one sentence or across consecutive sentences.",
+      "example_bad": "While it could potentially possibly help to some extent...",
+      "fix": "Commit to a position. One qualifier max. 'It helps' or 'It might help' — not both."
+    },
+    {
+      "name": "parallel_lists",
+      "description": "Every list item follows identical grammatical structure, forced into perfect parallelism.",
+      "example_bad": "First, innovation matters. Second, efficiency matters. Third, quality matters.",
+      "fix": "Break the pattern. Use different sentence shapes for each item. Real lists are messy."
+    },
+    {
+      "name": "uniform_sentence_length",
+      "description": "All sentences fall between 15-25 words with minimal variation. Human std dev is 8-12 words; AI is 2-3.",
+      "example_bad": "The platform offers comprehensive analytics. Users can track their performance metrics. The dashboard provides real-time insights.",
+      "fix": "Mix dramatically. Follow a 4-word sentence with a 35-word one. Fragments count. 'Works great.' is a valid sentence."
+    },
+    {
+      "name": "em_dash_overuse",
+      "description": "Excessive em dashes for parenthetical asides — often multiple per paragraph — creating a choppy rhythm.",
+      "example_bad": "The solution — which was innovative — transformed the industry — creating new opportunities.",
+      "fix": "One em dash per paragraph max. Use commas, periods, or parentheses for the rest."
+    },
+    {
+      "name": "synonym_cycling",
+      "description": "Rotating synonyms for the same concept instead of repeating the clearest word.",
+      "example_bad": "The platform... the solution... the tool... the system... the application...",
+      "fix": "Pick the best word and repeat it. Repetition is natural. Cycling synonyms is not."
+    },
+    {
+      "name": "rule_of_three",
+      "description": "Forcing everything into groups of three items, benefits, or points.",
+      "example_bad": "Speed, efficiency, and reliability. Three key benefits. Three main features. Three steps.",
+      "fix": "Use natural item counts. Sometimes two is enough. Sometimes you need four. Forced triples are a tell."
+    },
+    {
+      "name": "copula_avoidance",
+      "description": "Using 'serves as' / 'features' / 'boasts' instead of simple 'is' / 'has'.",
+      "example_bad": "The city boasts impressive architecture. The platform features robust analytics.",
+      "fix": "The city has impressive architecture. The platform has analytics. Simple verbs are fine."
+    },
+    {
+      "name": "significance_inflation",
+      "description": "Making ordinary things sound historically important with grandiose framing.",
+      "example_bad": "A pivotal moment in the evolution of digital transformation...",
+      "fix": "State the fact plainly. If it's actually significant, the details will show that."
+    },
+    {
+      "name": "negative_parallelism",
+      "description": "'It's not just X, it's Y' construction used for emphasis.",
+      "example_bad": "It's not just a tool, it's a revolution.",
+      "fix": "Just say what it is directly. The 'not just... it's' pattern is an AI crutch."
+    },
+    {
+      "name": "formulaic_challenge_dismiss",
+      "description": "'Despite challenges... continues to thrive' template that dismisses complexity.",
+      "example_bad": "Despite facing numerous challenges, the company continues to thrive and innovate.",
+      "fix": "Name the specific challenges and what actually happened. Don't hand-wave."
+    },
+    {
+      "name": "perfect_grammar",
+      "description": "Zero fragments, zero starting with conjunctions, zero contractions throughout. Too clean.",
+      "example_bad": "The system is effective. It provides value. Users appreciate the functionality.",
+      "fix": "Use fragments. Start with 'And' or 'But'. Use contractions. Real writing has texture."
+    },
+    {
+      "name": "inline_header_lists",
+      "description": "**Bold Label:** content format used everywhere instead of prose.",
+      "example_bad": "**Speed**: Lightning-fast. **Reliability**: 99.9% uptime. **Scale**: Millions of requests.",
+      "fix": "Write in prose. It's fast, reliable, and scales. Headers are for major sections only."
+    },
+    {
+      "name": "title_case_everything",
+      "description": "Using Title Case For Every Heading And Subheading.",
+      "example_bad": "Getting Started With The Platform",
+      "fix": "Use sentence case: 'Getting started with the platform'. Title case every word looks automated."
+    }
+  ]
+}
