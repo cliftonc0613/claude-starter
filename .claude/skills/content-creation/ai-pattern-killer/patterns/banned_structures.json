@@ -1,5 +1,6 @@
 {
-  "_description": "Structural patterns that make text detectable as AI-generated. Each pattern includes a description, bad example, and fix.",
+  "_description": "Structural patterns that make text detectable as AI-generated. Each pattern includes a description, bad example, and fix. Sourced from AI detection research + AI Writing Style Guide (38 rules).",
+  "_rules_covered": "Rules 10, 11, 22, 27, 28, 30, 31, 32",
   "patterns": [
     {
       "name": "triple_adjective_opener",
@@ -90,6 +91,30 @@
       "description": "Using Title Case For Every Heading And Subheading.",
       "example_bad": "Getting Started With The Platform",
       "fix": "Use sentence case: 'Getting started with the platform'. Title case every word looks automated."
+    },
+    {
+      "name": "deep_noun_pattern",
+      "description": "Pairing 'deep' with abstract nouns to sound profound. Always vague.",
+      "example_bad": "A deep understanding of the deep significance and deep impact of these deep insights.",
+      "fix": "Use specific descriptors: 'thorough analysis', 'detailed understanding', 'strong connection'. Say what makes it deep."
+    },
+    {
+      "name": "broken_citations",
+      "description": "Placeholder citations or vague attribution instead of real sources.",
+      "example_bad": "Studies show that productivity increases [citation needed]. According to experts [source]...",
+      "fix": "Either cite a real source with name, date, and data, or remove the claim entirely. No placeholder brackets."
+    },
+    {
+      "name": "emoji_in_headings",
+      "description": "Using emoji characters in section headings to appear friendly or organized.",
+      "example_bad": "🚀 Getting Started  |  ✅ Features  |  💡 Tips",
+      "fix": "Plain text headings only. Emoji in headings is a strong AI tell. Let the words do the work."
+    },
+    {
+      "name": "artificial_range",
+      "description": "'From X to Y' patterns that try to show breadth but feel formulaic.",
+      "example_bad": "From beginners to experts, from design to deployment, from concept to completion.",
+      "fix": "Name your specific audience or scope. 'Built for developers who ship daily' beats 'from beginners to experts'."
     }
   ]
 }

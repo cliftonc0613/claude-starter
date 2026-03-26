@@ -285,6 +285,23 @@ But Claude's tell is being "almost too consistently good" — overly measured, t
 
 ---
 
+## Core Principles
+
+These 8 principles govern all modes. Every scan, rewrite, and generation should enforce them:
+
+1. **Be direct** — No meta-commentary. Don't say "it's important to note" — just note it.
+2. **Be specific** — Concrete examples over buzzwords. Numbers over adjectives.
+3. **Be varied** — Diverse sentence structures and vocabulary. Never three paragraphs in a row with the same shape.
+4. **Be conversational** — Natural tone, not presentational. Write like you'd explain it to a colleague.
+5. **Be simple** — Plain language over flowery prose. "Use" not "utilize."
+6. **Be authentic** — Skip motivational language and jargon. No "empowering" or "unlocking potential."
+7. **Be evidence-based** — Show, don't tell. Cite real sources or drop the claim.
+8. **Be natural** — Avoid formulaic patterns. If it sounds like a template, rewrite it.
+
+These principles are the tie-breaker. When a rewrite could go multiple directions, pick the one that best follows these 8 rules.
+
+---
+
 ## Integration Hooks
 
 To add post-processing to an existing skill, add this to the skill's delivery step:

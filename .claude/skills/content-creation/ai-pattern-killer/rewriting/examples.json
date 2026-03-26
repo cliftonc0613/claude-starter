@@ -60,6 +60,36 @@
       "before": "The API adheres to RESTful architectural conventions, utilizing proper HTTP status codes and implementing comprehensive error handling mechanisms.",
       "after": "The API follows REST conventions with proper status codes. Basically, it does what you'd expect. No weird gotchas.",
       "strategy": "Mix formal and informal register in same paragraph"
+    },
+    {
+      "category": "jargon_replacement",
+      "before": "We leverage best practices to deliver actionable insights through in-depth data analysis, empowering stakeholders to drive data-driven decisions and optimize ROI across all touchpoints.",
+      "after": "We look at the numbers and tell you what to do differently. It works — our last client cut ad spend 30% and got more leads.",
+      "strategy": "Replace jargon with plain language + specific evidence"
+    },
+    {
+      "category": "meta_commentary_removal",
+      "before": "It's important to note that studies show that remote work increases productivity. Research suggests that employees who work from home are 13% more productive. Experts indicate this trend will continue.",
+      "after": "Stanford's 2023 study found remote workers were 13% more productive. The trend is accelerating — 58% of companies now offer hybrid options, up from 36% in 2021.",
+      "strategy": "Kill meta-commentary, name actual sources, add specific data"
+    },
+    {
+      "category": "metaphor_freshness",
+      "before": "Like a conductor orchestrating a symphony of innovation, the CEO navigated the complex landscape of digital transformation, embarking on a journey to unlock the secrets of sustainable growth.",
+      "after": "The CEO killed three product lines in Q1, redirected the budget to their SaaS offering, and hit $10M ARR by September. Painful decisions, but the numbers speak.",
+      "strategy": "Replace stale metaphors with specific facts and outcomes"
+    },
+    {
+      "category": "deep_noun_fix",
+      "before": "Our team brings deep understanding, deep insights, and deep knowledge to deliver deep analysis of your business challenges.",
+      "after": "Our team has spent 8 years in this space. We've seen what works and what doesn't — and we'll tell you straight.",
+      "strategy": "Replace 'deep + noun' with specific evidence of depth"
+    },
+    {
+      "category": "artificial_range_fix",
+      "before": "This course is designed for everyone from beginners to experts, covering everything from design to deployment, taking you from concept to completion.",
+      "after": "Built for developers who know the basics but want to ship faster. You'll build and deploy a real project by week 3.",
+      "strategy": "Replace generic range with specific audience and concrete outcome"
     }
   ]
 }

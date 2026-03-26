@@ -213,3 +213,74 @@ When rewriting AI text, work through this:
 - [ ] Use 2-3 intentional fragments per section
 - [ ] Start at least one sentence with "And" or "But"
 - [ ] Read it out loud — does it sound like a person talking?
+
+---
+
+## Strategy 8: Jargon Replacement
+
+Business and tech jargon is an AI tell. Replace with concrete, specific language.
+
+| Jargon | Human Alternative |
+|--------|-------------------|
+| bandwidth | capacity, time, availability |
+| governance framework | rules, policies, oversight structure |
+| stakeholders | people involved, the team, clients |
+| KPIs | metrics, goals, numbers we track |
+| ROI | return, payoff, what we got back |
+| MVP | first version, bare-bones release |
+| POC | test run, proof it works |
+| SLA | service guarantee, uptime promise |
+| TCO | total cost, what it actually costs |
+| value proposition | what you get, why it matters |
+| best practices | what works, proven approaches |
+| pain points | problems, frustrations, blockers |
+| touchpoints | interactions, places they see us |
+| deliverables | what we ship, the actual output |
+| scalable | grows with you, handles more load |
+| state-of-the-art | latest, modern, current-gen |
+| game-changer | big deal, major shift |
+| paradigm shift | fundamental change, new approach |
+| synergy | working together, combined effect |
+| thought leader | expert, authority, someone who knows |
+| disruptive innovation | new approach that replaces the old one |
+| actionable insights | things you can actually do with the data |
+| data-driven | based on the numbers, evidence-based |
+
+**Rule:** If the jargon would make someone outside your industry pause, replace it.
+
+---
+
+## Strategy 9: Kill Meta-Commentary
+
+AI loves talking about what it's about to say instead of just saying it. Delete the wrapper.
+
+| Meta-Commentary | Fix |
+|----------------|-----|
+| "It's important to note that X" | Just say X |
+| "It's worth mentioning that X" | Just say X |
+| "It's critical to understand that X" | Just say X |
+| "This is not an exhaustive list" | Delete entirely |
+| "As previously mentioned" | Delete, or just repeat the point |
+| "To shed light on this topic" | Delete, start with the point |
+| "Studies show that X" | Name the study, or just state X |
+| "Research suggests that X" | Cite the research, or just state X |
+| "Experts indicate that X" | Name the expert, or just state X |
+
+**Rule:** If the sentence works without the opening clause, delete the opening clause.
+
+---
+
+## Strategy 10: Metaphor Freshness
+
+AI reaches for the same tired metaphors. Conductor/orchestra, journey/voyage, tapestry/fabric. Use fresh, specific comparisons or skip the metaphor entirely.
+
+| Stale Metaphor | Fix |
+|---------------|-----|
+| "orchestrating a symphony of" | Describe the actual coordination |
+| "a tapestry of experiences" | List the specific experiences |
+| "embarking on a journey" | Say what actually happens step by step |
+| "unlocking the secrets of" | Explain the specific thing |
+| "navigating the landscape" | Name the specific terrain |
+| "hustle and bustle" | Describe the specific scene |
+
+**Rule:** If you've heard the metaphor a hundred times, it's dead. Use a specific comparison from the actual domain, or skip the metaphor.
