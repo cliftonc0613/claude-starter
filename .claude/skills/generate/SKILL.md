@@ -22,7 +22,7 @@ Read the recipe file before every generation — it holds the exact request shap
 1. **Route** — image or video? Draft or final? Pick the model from the table and read its recipe.
 2. **Prep refs** — logos, faces, product shots, and style references live in `knowledge/generations/refs/`. Never describe a logo or a face in prompt text; a described logo comes back wrong every time. Pass the real file. If the user's request clearly needs a reference that isn't in `refs/`, stop and ask for the file before spending credits.
 3. **Generate** — use `scripts/kie_task.py` (submit → wait split; see below). Run multiple generations one at a time to avoid rate limits.
-4. **Log + gallery** — the script writes a sidecar `.json` beside every file automatically. After a batch finishes, run `scripts/build_gallery.py` to refresh the gallery wall.
+4. **Log + gallery** — the script writes a sidecar `.json` beside every file automatically. After a batch finishes, run `scripts/build_gallery.py --open` to refresh the gallery wall and open it in the browser so the user sees the new work immediately.
 
 ## Output
 
@@ -79,10 +79,10 @@ Same basename plus `.json` is the contract — that's how anyone recovers "what 
 ## Gallery wall
 
 ```bash
-python3 scripts/build_gallery.py
+python3 scripts/build_gallery.py --open
 ```
 
-Scans `knowledge/generations/` and rewrites `knowledge/generations/gallery.html` — a single-file masonry wall (newest first, hover-play videos, click-to-lightbox). Run it after each generation batch so new work simply appears. Don't auto-open the page; just save it.
+Scans `knowledge/generations/` and rewrites `knowledge/generations/gallery.html` — a single-file masonry wall (newest first, hover-play videos, click-to-lightbox). Run it with `--open` as the last step of every generation batch — rebuild once per batch, not per file, so multi-image runs open the gallery a single time at the end. Omit `--open` only if the user asks not to have it pop up.
 
 ## Adding a model later
 

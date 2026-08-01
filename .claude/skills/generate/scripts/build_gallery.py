@@ -9,6 +9,7 @@ server and no manifest fetch. Re-run after each generation batch.
 
 import html
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -90,6 +91,8 @@ def main():
     out = GEN_DIR / "gallery.html"
     out.write_text(page)
     print(f"gallery rebuilt: {out} ({len(files)} items)")
+    if "--open" in sys.argv:
+        subprocess.run(["open", str(out)], check=False)
 
 
 if __name__ == "__main__":
