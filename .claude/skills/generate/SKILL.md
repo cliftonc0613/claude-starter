@@ -1,6 +1,6 @@
 ---
 name: generate
-description: Generate images and videos via the Kie AI jobs API with cost-safe routing. Use whenever the user says /generate, generate image, generate video, create image, create a thumbnail, hero image, animate this, make a clip, or asks for any AI media generation for a client or project — even without naming a model. Routes image jobs to Nano Banana 2 (cheap draft-first) and video jobs to Kling 3.0 (quote cost and get approval before running). Saves every output flat into knowledge/generations/ with a JSON sidecar log and rebuilds the gallery wall.
+description: Generate images and videos via the Kie AI jobs API with cost-safe routing. Use whenever the user says /generate, generate image, generate video, create image, create a thumbnail, hero image, animate this, make a clip, or asks for any AI media generation for a client or project — even without naming a model. Also use when the user asks to open, show, or view the gallery, gallery wall, generations wall, or their generated images — that request just rebuilds and opens the gallery page, no generation. Routes image jobs to Nano Banana 2 (cheap draft-first) and video jobs to Kling 3.0 (quote cost and get approval before running). Saves every output flat into knowledge/generations/ with a JSON sidecar log.
 ---
 
 # /generate
@@ -83,6 +83,8 @@ python3 scripts/build_gallery.py --open
 ```
 
 Scans `knowledge/generations/` and rewrites `knowledge/generations/gallery.html` — a single-file masonry wall (newest first, hover-play videos, click-to-lightbox). Run it with `--open` as the last step of every generation batch — rebuild once per batch, not per file, so multi-image runs open the gallery a single time at the end. Omit `--open` only if the user asks not to have it pop up.
+
+When the user just asks to **open/show the gallery** ("open the gallery wall", "show me my generations"), run this same command and nothing else — always rebuild before opening (it's instant) so the wall reflects any files added or deleted since last time.
 
 ## Adding a model later
 
