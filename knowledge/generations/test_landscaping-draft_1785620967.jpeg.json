@@ -1,0 +1,11 @@
+{
+  "model": "nano-banana-2",
+  "prompt": "A landscaping crew planting shrubs in a tidy suburban front yard at golden hour, warm sunlight, shallow depth of field, professional photography",
+  "refs": [],
+  "params": {
+    "aspect_ratio": "16:9",
+    "resolution": "1K"
+  },
+  "taskId": "44e360f1a40032fb9ee140173b4900dc",
+  "created": "2026-08-01T21:49:27Z"
+}

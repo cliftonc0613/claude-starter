@@ -134,7 +134,9 @@ def download_and_log(state, urls):
         ext = Path(url.split("?")[0]).suffix or ".bin"
         suffix = f"_{i + 1}" if len(urls) > 1 else ""
         dest = out_dir / f"{base}{suffix}_{ts}{ext}"
-        with urllib.request.urlopen(url, timeout=300) as r:
+        # Kie's result CDN 403s Python's default user-agent; send a browser-ish one.
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=300) as r:
             dest.write_bytes(r.read())
         sidecar = {
             "model": state["model"],
