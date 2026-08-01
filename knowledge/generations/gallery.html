@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generations</title><style>
+:root{--bg:#111014;--card:#1b1a20;--ink:#e8e5de;--dim:#8b8794;--accent:#e05d2a}
+*{margin:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 Georgia,'Times New Roman',serif;padding:2rem}
+header{max-width:1400px;margin:0 auto 2rem}
+h1{font-size:1.6rem;font-weight:400;letter-spacing:.02em}
+h1 b{color:var(--accent);font-weight:700}
+header p{color:var(--dim);font-size:.85rem;margin-top:.25rem}
+.wall{max-width:1400px;margin:0 auto;columns:4 300px;column-gap:14px}
+.tile{break-inside:avoid;margin:0 0 14px;background:var(--card);border-radius:14px;overflow:hidden;cursor:pointer;position:relative;transition:transform .18s ease,box-shadow .18s ease}
+.tile:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.tile img,.tile video{display:block;width:100%;height:auto}
+.tile .cap{position:absolute;inset:auto 0 0;padding:1.4rem .7rem .5rem;font-size:.72rem;color:#cfccc5;background:linear-gradient(transparent,rgba(0,0,0,.75));opacity:0;transition:opacity .18s}
+.tile:hover .cap{opacity:1}
+.lb{position:fixed;inset:0;background:rgba(10,9,12,.92);display:none;align-items:center;justify-content:center;padding:3vmin;z-index:9}
+.lb.open{display:flex}
+.lb img,.lb video{max-width:94vw;max-height:92vh;border-radius:10px}
+.empty{color:var(--dim);text-align:center;padding:5rem 0;font-style:italic}
+</style></head><body>
+<header><h1><b>/generate</b> — the wall</h1><p>0 pieces · newest first · hover a video to preview, click anything to enlarge</p></header>
+<main class="wall"><p class="empty">Nothing generated yet — type /generate and ask for something.</p></main>
+<div class="lb" id="lb"></div>
+<script>
+const lb=document.getElementById('lb');
+document.querySelectorAll('.tile').forEach(t=>{
+  const v=t.querySelector('video');
+  if(v){t.addEventListener('mouseenter',()=>{v.muted=true;v.play().catch(()=>{})});
+       t.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0})}
+  t.addEventListener('click',()=>{
+    const s=t.querySelector('img,video');
+    lb.innerHTML=s.tagName==='VIDEO'
+      ?`<video src="${s.getAttribute('src')}" controls autoplay loop></video>`
+      :`<img src="${s.getAttribute('src')}">`;
+    lb.classList.add('open')})});
+lb.addEventListener('click',e=>{if(e.target===lb){lb.innerHTML='';lb.classList.remove('open')}});
+addEventListener('keydown',e=>{if(e.key==='Escape'){lb.innerHTML='';lb.classList.remove('open')}});
+</script></body></html>
