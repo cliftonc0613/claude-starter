@@ -24,7 +24,9 @@ from pathlib import Path
 
 API_BASE = "https://api.kie.ai/api/v1/jobs"
 UPLOAD_URL = "https://kieai.redpandaai.co/api/file-stream-upload"
-DEFAULT_OUT = "/Users/cliftoncanady/web-apps/_starter/knowledge/generations"
+# Portable: resolves to the current project's knowledge/generations folder,
+# overridable with the GENERATIONS_DIR env var. Created on first save.
+DEFAULT_OUT = os.environ.get("GENERATIONS_DIR") or str(Path.cwd() / "knowledge" / "generations")
 STATE_DIR = Path.home() / ".kie" / "generate-tasks"
 
 
@@ -36,7 +38,7 @@ def load_api_key():
     key = os.environ.get("KIE_API_KEY")
     if key:
         return key.strip()
-    for env in (Path.cwd() / ".env", Path(DEFAULT_OUT).parent.parent / ".env", Path.home() / ".kie" / ".env"):
+    for env in (Path.cwd() / ".env", Path.home() / ".kie" / ".env"):
         if env.is_file():
             for line in env.read_text().splitlines():
                 m = re.match(r"\s*(?:export\s+)?KIE_API_KEY\s*=\s*['\"]?([^'\"\s]+)", line)

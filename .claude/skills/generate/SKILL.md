@@ -26,8 +26,9 @@ Read the recipe file before every generation — it holds the exact request shap
 
 ## Output
 
-- Every file saves FLAT into: `/Users/cliftoncanady/web-apps/_starter/knowledge/generations/`
+- Every file saves FLAT into the current project's `knowledge/generations/` folder (created automatically on first use; override with the `GENERATIONS_DIR` env var). The skill is portable — copy it to any project and outputs land in that project's own folder.
 - No subfolders — subfolders break the gallery and every future tool that reads the library. References are the one exception and live in `knowledge/generations/refs/`.
+- Run the scripts from the project root so `knowledge/generations/` resolves to the right place.
 - Naming: `{project}_{description}_{timestamp}.{ext}` — the script handles this via `--name {project}_{description}`.
 
 ## Cost rules

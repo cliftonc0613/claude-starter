@@ -9,11 +9,13 @@ server and no manifest fetch. Re-run after each generation batch.
 
 import html
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
-GEN_DIR = Path("/Users/cliftoncanady/web-apps/_starter/knowledge/generations")
+# Portable: current project's knowledge/generations, overridable via GENERATIONS_DIR.
+GEN_DIR = Path(os.environ.get("GENERATIONS_DIR") or Path.cwd() / "knowledge" / "generations")
 IMAGE_EXT = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
 VIDEO_EXT = {".mp4", ".webm", ".mov"}
 
@@ -66,8 +68,8 @@ def caption(f):
 
 
 def main():
-    if not GEN_DIR.is_dir():
-        sys.exit(f"generations folder not found: {GEN_DIR}")
+    GEN_DIR.mkdir(parents=True, exist_ok=True)
+    (GEN_DIR / "refs").mkdir(exist_ok=True)
     files = sorted(
         (f for f in GEN_DIR.iterdir()
          if f.is_file() and f.suffix.lower() in IMAGE_EXT | VIDEO_EXT),
