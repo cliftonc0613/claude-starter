@@ -21,8 +21,9 @@ Read the recipe file before every generation — it holds the exact request shap
 
 1. **Route** — image or video? Draft or final? Pick the model from the table and read its recipe.
 2. **Prep refs** — logos, faces, product shots, and style references live in `knowledge/generations/refs/`. Never describe a logo or a face in prompt text; a described logo comes back wrong every time. Pass the real file. If the user's request clearly needs a reference that isn't in `refs/`, stop and ask for the file before spending credits.
-3. **Generate** — use `scripts/kie_task.py` (submit → wait split; see below). Run multiple generations one at a time to avoid rate limits.
-4. **Log + gallery** — the script writes a sidecar `.json` beside every file automatically. After a batch finishes, run `scripts/build_gallery.py --open` to refresh the gallery wall and open it in the browser so the user sees the new work immediately.
+3. **Check balance + quote + confirm** — before every generation (image or video, draft or final), run `python3 scripts/kie_task.py credits` to read the current Kie AI balance, then tell the user the model, the estimated cost for this specific job (see each recipe's Cost row — count of images, or seconds × mode for video), and the resulting balance if it were to run. Wait for an explicit go-ahead before calling `submit`. This is not optional for cheap drafts either — the point is the user always knows the cost before it's spent, not just for expensive video runs. One approval = one run; a retry or a second take needs a fresh yes.
+4. **Generate** — use `scripts/kie_task.py` (submit → wait split; see below). Run multiple generations one at a time to avoid rate limits.
+5. **Log + gallery** — the script writes a sidecar `.json` beside every file automatically. After a batch finishes, run `scripts/build_gallery.py --open` to refresh the gallery wall and open it in the browser so the user sees the new work immediately.
 
 ## Output
 
@@ -35,16 +36,20 @@ Read the recipe file before every generation — it holds the exact request shap
 
 These exist because video is the expensive lane (roughly $0.20–0.35/second — a 10s clip is $2–3.50) while draft images cost about a cent.
 
-- **Quote before video.** Before any paid video run, state model, duration, resolution, and estimated dollars, then wait for an explicit go. Quoting alone is not approval. One approval = one run — a second take needs a second yes.
+- **Always check balance and quote first — every job, not just video.** Run `python3 scripts/kie_task.py credits` and quote the estimated cost before calling `submit`, even for a one-cent draft image. See step 3 of the pipeline above.
 - **Draft cheap, finish pretty.** Iterate on `nano-banana-2` at 1K/2K. Only when the user picks a favourite, rerun that one prompt at 4K or on `nano-banana-pro`. Never burn quality-tier credits on throwaway drafts.
 - **Real refs, never described** (see step 2 above).
 - If the API returns 402 (insufficient credits), tell the user to top up at kie.ai — do not retry.
+- If a balance is too low to cover even the estimated cost of the requested job, say so plainly and ask whether to proceed at a cheaper setting (lower resolution, shorter duration, std instead of pro) or stop so the user can top up.
 
 ## Running the script
 
 The Kie jobs API is async: `createTask` returns in seconds, but rendering takes 30s–several minutes. A single Bash call polling to completion gets killed by the 2-minute default timeout, so the script splits into resumable subcommands. Always use `python3`.
 
 ```bash
+# 0. Check balance before quoting (< 5s). Prints {"credits": N}.
+python3 scripts/kie_task.py credits
+
 # 1. Submit (< 5s). Prints JSON with taskId.
 python3 scripts/kie_task.py submit \
   --model nano-banana-2 \
@@ -54,6 +59,8 @@ python3 scripts/kie_task.py submit \
 # 2. Wait — invoke with Bash timeout: 600000. Polls, downloads, writes sidecar, exits 0.
 python3 scripts/kie_task.py wait <taskId>
 ```
+
+`credits` returns Kie AI's own account credit units, not dollars — Kie doesn't publish a fixed credit-to-dollar rate, so when quoting a job say the balance in credits as reported and the job cost in the dollar estimate from the model's recipe (its Cost row); don't invent a credit-for-this-job number you can't verify.
 
 Exit code `3` from `wait` means "still generating, resumable" — call `wait <taskId>` again; no extra credits are spent. `status <taskId>` gives a quick non-downloading poll; `fetch <taskId>` recovers a finished task whose download was interrupted (result URLs expire in ~24h, so fetch promptly).
 

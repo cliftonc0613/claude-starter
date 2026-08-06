@@ -2,6 +2,7 @@
 """Generic Kie AI jobs-API runner for the /generate skill.
 
 Subcommands (resumable split so long renders survive Bash timeouts):
+  credits              print remaining Kie AI account credit balance
   submit --model <id> --input '<json>' [--ref file ...] [--name base] [--out-dir dir]
   wait   <taskId>     poll until done, download, write sidecar log (exit 3 = still going, re-run)
   status <taskId>     one quick poll, no download
@@ -202,6 +203,15 @@ def cmd_status(args):
     return 0
 
 
+def cmd_credits(args):
+    key = load_api_key()
+    resp = api("GET", "https://api.kie.ai/api/v1/chat/credit", key)
+    if resp.get("code") != 200:
+        sys.exit(f"credit check failed: {resp}")
+    print(json.dumps({"credits": resp.get("data")}))
+    return 0
+
+
 def cmd_fetch(args):
     key = load_api_key()
     state = load_state(args.task_id)
@@ -233,6 +243,8 @@ def main():
             s.add_argument("--timeout", type=int, default=timeout)
             s.add_argument("--interval", type=int, default=10)
         s.set_defaults(fn=fn)
+
+    sub.add_parser("credits").set_defaults(fn=cmd_credits)
 
     args = p.parse_args()
     sys.exit(args.fn(args))
