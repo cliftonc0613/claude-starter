@@ -22,6 +22,7 @@ Before writing anything, use `AskUserQuestion` to establish:
 3. **The mission** — what "winning" looks like: the #1 resource for [topic], the #1 choice for [what they sell/why the site exists], recovering lost traffic, something else. Be specific — vague missions produce vague weekly work.
 4. **Autonomy level** — full autonomy with periodic check-ins, or "report what you'd do and wait for approval" for the first couple of weeks. The template defaults to full autonomy; plenty of users want the safer on-ramp instead, and it's a one-line change to flip it back later (see Step 1).
 5. **What connectors/tools are actually available** — Google Search Console, GA4, DataForSEO, Apify scrapers, OpenSEO MCP, or none of the above (WebFetch/WebSearch only). Don't assume — ask. The audit prompt in Step 2 should only reference tools that exist, or it produces a prompt Claude can't actually execute later.
+6. **Is there a real operator/entity behind this site right now** — someone who'd actually answer the tracked number and fulfill the work, or is this purely pre-sale (a rank-and-rent site built and proven before an operator signs on)? This isn't a formality — it decides whether a Google Business Profile is even appropriate: a GBP for a business that isn't actually operating risks suspension as an inauthentic listing, which is worse than having no GBP at all. If the answer is no operator yet, "proving lead volume" means demonstrating real inbound call/form interest as a sales asset for a future operator, not evidence of completed jobs, and Step 1's instructions must say so explicitly so no later session tries to stand up a GBP prematurely.
 
 Batch these into as few `AskUserQuestion` calls as make sense (the tool supports up to 4 questions at once) rather than asking one at a time.
 
@@ -53,6 +54,12 @@ HOW YOU WORK
   Never invent a detail to fill a gap.
 - Build and maintain a voice file from the existing writing on the site.
   Match it. Don't write like a brochure.
+- If the site already has an abstract voice signature (e.g. a
+  `voice-dna.json`) but no practical style guide with concrete examples,
+  build one from an actual published page or post on the site, not from
+  the abstract file alone — future writers need real patterns to match
+  (sentence rhythm, structural conventions, CTA phrasing), not just
+  principles.
 - Log every change you make to the live site in a changelog file, so I
   can spot-check anything without asking you.
 - Ask before doing anything you can't undo.
@@ -64,6 +71,9 @@ WHAT NOT TO DO
 - Don't bulk-rewrite content that already ranks well.
 - Don't publish anything you haven't fact-checked.
 - Don't change URLs of existing pages. Ever.
+[If Step 0 confirmed there's no real operator yet: add "Don't create or
+recommend a Google Business Profile / Maps listing — revisit only once a
+real operator signs on."]
 ```
 
 Two lines earn their place more than the rest, and should not be cut even when trimming: **"not an assistant waiting for instructions"** (stops it from asking what to do every session) and **"don't change URLs of existing pages, ever"** (protects search history that can't be recovered once broken).
@@ -134,13 +144,17 @@ What to set up:
 
 2. **A dedicated Environment** (in the `schedule` skill's sense — an `environment_id`) pointing at that repo, separate from any other project's environment. This is a real isolation boundary, not just tidiness: any credential configured on an environment (a CMS login, an API key) is available to *every* routine that uses it. One environment per site keeps a bug or bad prompt in one site's routine from being able to touch another site's live content. Ask the user to confirm or create this environment before continuing — check existing environments first (a routine list via `RemoteTrigger` on a sibling project will show its `environment_id`, repo, and structure if one already exists as a template).
 
-3. **Decide the commit pattern now, not later.** The safe default — consistent with Step 1's "ask before doing anything you can't undo" — is: the routine commits to a dated branch (`weekly/YYYY-MM-DD`) and opens a PR describing what changed and why, rather than pushing straight to the main branch. Only relax this to direct-push if the user explicitly wants full autonomy with no review step.
+3. **Decide the commit pattern now, not later.** The safe default — consistent with Step 1's "ask before doing anything you can't undo" — is: the routine commits to a dated branch (`weekly/YYYY-MM-DD`) and opens a PR describing what changed and why, rather than pushing straight to the main branch. Only relax this to direct-push if the user explicitly wants full autonomy with no review step. This default applies to the routine that touches live site content. A companion dashboard-refresh routine (see Step 4's two-routine split) that only writes tracking files and republishes the dashboard artifact should push directly to the current branch instead — no PR, no dated branch — since there's no live-site change to review.
 
 If the user already has a repo/environment for this exact site (check before assuming there isn't one), reuse it rather than creating a duplicate.
 
 ## Step 4: Set up the recurring run
 
+Before writing the routine prompt from scratch, check whether a sibling site (same user, comparable site type) already has a working routine — `RemoteTrigger` list will show it. If one exists, match its structure, numbering, and step wording as closely as the target site's actual files and connectors allow — copy the sibling's phrasing near-verbatim where the underlying action is genuinely the same (e.g. how a step commits and pushes), only diverging where paths, connectors, or file names actually differ. A generic template, or even a paraphrase of the sibling's own steps, invites rework once the user compares it against the pattern they already trust; reusing the sibling's proven wording directly avoids that.
+
 Two paths exist depending on where the user actually wants this to live — ask which if it isn't already obvious from Step 0's connector answer (claude.ai connectors implies claude.ai Project; none/WebFetch-only leans toward Claude Code native).
+
+If the site has an image-generation skill (check for `.claude/skills/**/generate/SKILL.md` or similar), add a numbered step to the routine prompt: use it for any new content that needs images, following its own model-selection and reference-file rules (never describe a logo or face in a prompt when a real reference file exists), and skip gracefully — noting it in the PR description and in memory — if the required API key is missing or every generation call fails, rather than retrying.
 
 **Path A — claude.ai Project scheduled task.** Give the user this to create *from inside the Project* (so it inherits the folder, instructions, and connectors automatically):
 
@@ -196,6 +210,13 @@ Ask whether the user wants a standing dashboard — a single artifact that repor
 - What's coming up next
 - Any housekeeping that needs them specifically
 - Anything important, flagged
+- For a rank-and-rent site without an operator yet: a standing Outreach
+  card — target business, contact info, and a ready-to-send pitch script
+  with a copy button, sourced from real local-business data (e.g. via the
+  SEO connector's local-business search), never invented. Finding a
+  renter can be the single highest-value thing this dashboard surfaces,
+  so don't treat it as an afterthought once a mission from Step 0
+  identifies a rank-and-rent site with no operator.
 
 If the current session can publish artifacts, build it now as a live artifact (load the `artifact-design` skill first, as with any artifact) using whatever real data is available from Step 2's audit as the baseline. Otherwise, hand over the build prompt and a refresh prompt for the user to run in their Project, with the same Path A/B scheduling choice as Step 4 — the refresh should run a few hours after the working task, so results are ready when the user next opens the dashboard (Monday morning if the working task ran Sunday). For Path B specifically, this is the second routine from Step 4's two-routine split — same environment, offset cadence, and it should update the *same* artifact in place (pass the existing artifact's `url` to the `Artifact` tool) rather than publishing a new one every week.
 
