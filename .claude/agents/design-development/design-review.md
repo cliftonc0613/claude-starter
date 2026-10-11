@@ -1,5 +1,5 @@
 ---
-name: design-review
+name: design-review-quick
 description: Conduct a comprehensive design review of UI changes using the design-review agent
 model: haiku
 tools: Read, Write, Edit, Bash

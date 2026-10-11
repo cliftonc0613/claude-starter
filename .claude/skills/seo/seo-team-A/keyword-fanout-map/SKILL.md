@@ -1,6 +1,7 @@
 ---
 name: keyword-fanout-map
-description: Use for keyword research: turning a seed keyword, business type or topic into an intent-clustered keyword map with real search volumes, AI search volume and the fan-out questions a page must answer. Step 1 of the 5-skill SEO system. Also use when asked what to write about, which keyword to target, or to find keywords for a page.
+description: >-
+  Use for keyword research: turning a seed keyword, business type or topic into an intent-clustered keyword map with real search volumes, AI search volume and the fan-out questions a page must answer. Step 1 of the 5-skill SEO system. Also use when asked what to write about, which keyword to target, or to find keywords for a page.
 ---
 
 # Keyword & Fan-Out Map

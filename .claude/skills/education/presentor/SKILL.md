@@ -1,6 +1,7 @@
 ---
 name: presentor
-description: This skill should be used when creating, editing, or converting presentations using Presos (Jekyll-based presentation framework). Activates for requests like "create presentation about X", "build slides for Y", or "turn this outline into a presentation". Specializes in educational and course materials with a mandatory two-phase workflow: notes approval, then slide generation.
+description: >-
+  This skill should be used when creating, editing, or converting presentations using Presos (Jekyll-based presentation framework). Activates for requests like "create presentation about X", "build slides for Y", or "turn this outline into a presentation". Specializes in educational and course materials with a mandatory two-phase workflow: notes approval, then slide generation.
 ---
 
 # Presentor
